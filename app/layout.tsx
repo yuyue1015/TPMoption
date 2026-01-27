@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '探险困境选择指南',
+  title: '双点博物馆探险困境指南',
   description: '查询探险困境的选择与结果',
 }
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-stone-100`}>{children}</body>
     </html>
   )
 }
