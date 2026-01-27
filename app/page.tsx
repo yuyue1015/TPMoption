@@ -1,10 +1,14 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Compass, AlertTriangle } from 'lucide-react';
+import { Search, Compass, AlertTriangle, ExternalLink } from 'lucide-react';
 import { DILEMMA_DATA, DilemmaRecord } from './dilemma-data';
 
-// 定义聚合后的数据结构
+// --- 【配置区域】 ---
+// 你的飞书表单链接 (直接填入你的分享链接即可)
+const FORM_URL = "https://my.feishu.cn/share/base/form/shrcnL8QkRKAuxL5J6FuT2nVOoe"; 
+// -------------------
+
 interface GroupedDilemma {
   name: string;
   map: string;
@@ -20,13 +24,13 @@ export default function DilemmaSearchApp() {
 
     const lowerQuery = query.toLowerCase().trim();
 
-    // 1. 先过滤
+    // 1. 过滤
     const filteredRows = DILEMMA_DATA.filter(item => 
       (item.dilemma?.toLowerCase().includes(lowerQuery)) ||
       (item.map?.toLowerCase().includes(lowerQuery))
     );
 
-    // 2. 分组聚合
+    // 2. 分组
     const groups: { [key: string]: GroupedDilemma } = {};
 
     filteredRows.forEach(row => {
@@ -46,7 +50,7 @@ export default function DilemmaSearchApp() {
 
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800 p-4 md:p-8 font-sans">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto flex flex-col min-h-[90vh]">
         
         {/* 标题区域 */}
         <div className="text-center mb-8 mt-6">
@@ -76,7 +80,7 @@ export default function DilemmaSearchApp() {
         </div>
 
         {/* 结果列表 */}
-        <div className="space-y-6">
+        <div className="space-y-6 flex-grow">
           {!query ? (
             <div className="text-center py-16 opacity-40">
               <p className="text-lg">等待输入...</p>
@@ -92,10 +96,26 @@ export default function DilemmaSearchApp() {
           )}
         </div>
         
-        {/* 页脚 (按照你的要求修改) */}
-        <div className="mt-12 mb-8 text-center space-y-2">
-          <p className="text-xs text-stone-400">数据来源于探险家记录 | 仅供参考</p>
-          <p className="text-sm font-medium text-orange-600">更多攻略欢迎关注 @悦小白游戏记</p>
+        {/* 页脚区域 */}
+        <div className="mt-16 mb-8 text-center space-y-6">
+          
+          {/* 反馈按钮 */}
+          <div>
+            <a 
+              href={FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-white border border-stone-300 rounded-full text-stone-600 font-medium hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 transition-all shadow-sm"
+            >
+              <span>📝 提交反馈 / 补充数据</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-xs text-stone-400">数据来源于探险家记录 | 仅供参考</p>
+            <p className="text-sm font-medium text-orange-600">更多攻略欢迎关注 @悦小白游戏记</p>
+          </div>
         </div>
 
       </div>
@@ -103,7 +123,7 @@ export default function DilemmaSearchApp() {
   );
 }
 
-// 修改后的卡片组件
+// 卡片组件
 function DilemmaCard({ data }: { data: GroupedDilemma }) {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
@@ -122,9 +142,9 @@ function DilemmaCard({ data }: { data: GroupedDilemma }) {
       {/* 列表区域 */}
       <div className="px-5 py-2">
         {data.options.map((opt, idx) => (
-          <div key={idx} className="py-4 border-b border-dashed border-stone-300 last:border-0">
+          <div key={idx} className="py-4 border-b border-dashed border-stone-300 last:border-0 relative">
             {/* 第一行：你的选择 */}
-            <div className="mb-2 text-base">
+            <div className="mb-2 text-base pr-2">
               <span className="font-bold text-stone-700">你的选择【{idx + 1}】：</span>
               <span className="text-stone-900">{opt.option}</span>
             </div>
