@@ -175,7 +175,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "165", dilemma: "闻声辩路", option: "别去听", result: "未知", map: "已知宇宙", evaluation: "中性" },
   { id: "166", dilemma: "闻声辩路", option: "美妙的歌声！", result: "探险行动时长：+1天, 士气高涨, 【疾病】陨石螨虫", map: "已知宇宙", evaluation: "负面,正面,疾病" },
   { id: "167", dilemma: "闻声辩路", option: "远处倾听（调查勘探）", result: "探险行动时长：+2天, 士气高涨", map: "已知宇宙", evaluation: "负面,正面" },
-  { id: "168", dilemma: "加冰", option: "等待救援", result: "未知", map: "低端科技地穴", evaluation: "中性" },
+  { id: "168", dilemma: "加冰", option: "等待救援", result: "展示品品质-1", map: "低端科技地穴", evaluation: "负面" },
   { id: "169", dilemma: "加冰", option: "取暖（荒野求生）", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
   { id: "170", dilemma: "加冰", option: "踹门", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
   { id: "171", dilemma: "巨喵来袭", option: "快逃", result: "未知", map: "双点海", evaluation: "中性" },
@@ -271,3 +271,4 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "261", dilemma: "沙漠救援行动", option: "潇洒狮幼崽", result: "特质：猫奴", map: "远方群岛", evaluation: "正面" },
   { id: "262", dilemma: "沙漠救援行动", option: "弹跳羚", result: "未知", map: "远方群岛", evaluation: "中性" }
 ];
+
