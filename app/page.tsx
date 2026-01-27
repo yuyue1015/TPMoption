@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Map, Compass, AlertTriangle } from 'lucide-react';
+import { Search, Compass, AlertTriangle } from 'lucide-react';
 import { DILEMMA_DATA, DilemmaRecord } from './dilemma-data';
 
 // 定义聚合后的数据结构
@@ -20,13 +20,13 @@ export default function DilemmaSearchApp() {
 
     const lowerQuery = query.toLowerCase().trim();
 
-    // 1. 先过滤出符合条件的行 (支持搜困境名、地图)
+    // 1. 先过滤
     const filteredRows = DILEMMA_DATA.filter(item => 
       (item.dilemma?.toLowerCase().includes(lowerQuery)) ||
       (item.map?.toLowerCase().includes(lowerQuery))
     );
 
-    // 2. 将扁平的行按“困境名称”分组聚合
+    // 2. 分组聚合
     const groups: { [key: string]: GroupedDilemma } = {};
 
     filteredRows.forEach(row => {
@@ -40,63 +40,62 @@ export default function DilemmaSearchApp() {
       groups[row.dilemma].options.push(row);
     });
 
-    // 转为数组返回
     return Object.values(groups);
 
   }, [query]);
 
   return (
     <div className="min-h-screen bg-stone-100 text-stone-800 p-4 md:p-8 font-sans">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         
-        {/* Header */}
-        <div className="text-center mb-10 mt-8">
+        {/* 标题区域 */}
+        <div className="text-center mb-8 mt-6">
           <div className="inline-block p-3 bg-orange-600 rounded-full text-white mb-4 shadow-lg">
-            <Compass size={40} />
+            <Compass size={36} />
           </div>
-          <h1 className="text-4xl font-extrabold text-stone-900 tracking-tight mb-2">
+          <h1 className="text-3xl font-extrabold text-stone-900 mb-2">
             探险困境<span className="text-orange-600">生存指南</span>
           </h1>
-          <p className="text-stone-500">
-            已收录 {DILEMMA_DATA.length} 条记录，助你避开危险。
+          <p className="text-stone-500 text-sm">
+            已收录 {DILEMMA_DATA.length} 条记录
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="sticky top-6 z-20 bg-white p-2 rounded-2xl shadow-xl border border-stone-200 mb-10 max-w-2xl mx-auto">
+        {/* 搜索框 */}
+        <div className="sticky top-4 z-20 bg-white p-2 rounded-xl shadow-lg border border-stone-200 mb-8">
           <div className="relative">
-            <Search className="absolute left-4 top-3.5 text-stone-400 w-6 h-6" />
+            <Search className="absolute left-4 top-3.5 text-stone-400 w-5 h-5" />
             <input 
               type="text" 
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-transparent focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg placeholder-stone-400"
-              placeholder="搜索困境名称 (例如: 上古战场)..."
+              className="w-full pl-11 pr-4 py-3 rounded-lg bg-transparent focus:outline-none focus:ring-2 focus:ring-orange-500 text-base placeholder-stone-400"
+              placeholder="请输入困境名称 (如: 上古战场)..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
         </div>
 
-        {/* Results List */}
-        <div className="space-y-8">
+        {/* 结果列表 */}
+        <div className="space-y-6">
           {!query ? (
-            <div className="text-center py-20 opacity-40">
-              <Map size={80} className="mx-auto mb-4 text-stone-300" />
-              <p className="text-xl">请输入关键词开始查询...</p>
+            <div className="text-center py-16 opacity-40">
+              <p className="text-lg">等待输入...</p>
             </div>
           ) : results.length > 0 ? (
             results.map((group) => (
               <DilemmaCard key={group.name} data={group} />
             ))
           ) : (
-            <div className="text-center py-10 text-stone-500 bg-white rounded-xl border border-stone-200 border-dashed">
-              <p>未收录该困境数据，请谨慎选择！</p>
+            <div className="text-center py-8 text-stone-500 bg-white rounded-lg border border-dashed border-stone-300">
+              <p>暂无相关记录</p>
             </div>
           )}
         </div>
         
-        {/* Footer */}
-        <div className="mt-20 text-center text-xs text-stone-400">
-          数据来源于探险家记录 | 仅供参考
+        {/* 页脚 (按照你的要求修改) */}
+        <div className="mt-12 mb-8 text-center space-y-2">
+          <p className="text-xs text-stone-400">数据来源于探险家记录 | 仅供参考</p>
+          <p className="text-sm font-medium text-orange-600">更多攻略欢迎关注 @悦小白游戏记</p>
         </div>
 
       </div>
@@ -104,51 +103,39 @@ export default function DilemmaSearchApp() {
   );
 }
 
-// 单个困境卡片组件
+// 修改后的卡片组件
 function DilemmaCard({ data }: { data: GroupedDilemma }) {
   return (
-    <div className="bg-white rounded-xl shadow-sm border-l-4 border-orange-500 overflow-hidden hover:shadow-md transition-shadow">
-      {/* 卡片头部：困境名 + 地图 */}
-      <div className="bg-stone-50 p-4 border-b border-stone-100 flex justify-between items-center">
-        <h2 className="text-xl font-bold flex items-center gap-2">
-          <AlertTriangle className="text-orange-600" size={20} />
+    <div className="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+      
+      {/* 头部：显示困境名称和地图 */}
+      <div className="bg-orange-50 px-5 py-4 border-b border-orange-100">
+        <h2 className="text-lg font-bold text-stone-900 flex items-center gap-2 mb-1">
+          <AlertTriangle className="text-orange-600 w-5 h-5" />
           {data.name}
         </h2>
-        {data.map && (
-          <span className="text-xs font-medium px-2 py-1 bg-stone-200 text-stone-600 rounded flex items-center gap-1">
-            <Map size={12} />
-            {data.map}
-          </span>
-        )}
+        <div className="text-stone-600 text-sm font-medium pl-7">
+          地图：{data.map || '未知地图'}
+        </div>
       </div>
 
-      {/* 选项列表 */}
-      <div className="divide-y divide-stone-100">
+      {/* 列表区域 */}
+      <div className="px-5 py-2">
         {data.options.map((opt, idx) => (
-          <div key={idx} className="p-4 md:p-5 flex flex-col md:flex-row gap-2 md:gap-4 md:items-center group hover:bg-orange-50/30 transition-colors">
+          <div key={idx} className="py-4 border-b border-dashed border-stone-300 last:border-0">
+            {/* 第一行：你的选择 */}
+            <div className="mb-2 text-base">
+              <span className="font-bold text-stone-700">你的选择【{idx + 1}】：</span>
+              <span className="text-stone-900">{opt.option}</span>
+            </div>
             
-            {/* 左侧：选择 */}
-            <div className="md:w-1/3 shrink-0">
-              <span className="text-xs text-stone-400 uppercase font-bold tracking-wider mb-1 block">
-                你的选择
+            {/* 第二行：产生的后果 */}
+            <div className="text-base">
+              <span className="font-bold text-stone-500">产生的后果：</span>
+              <span className={`font-medium ${getResultColor(opt.evaluation)}`}>
+                {opt.result || "暂无明确结果"}
               </span>
-              <div className="font-bold text-stone-800 text-lg leading-tight">
-                {opt.option}
-              </div>
             </div>
-
-            {/* 右侧：结果 (修改点：去图标，加冒号，横排) */}
-            <div className="flex-1">
-               <div className="text-base">
-                 <span className="text-xs text-stone-400 uppercase font-bold tracking-wider mr-2">
-                   产生的后果：
-                 </span>
-                 <span className={`font-medium ${getResultColor(opt.evaluation)}`}>
-                   {opt.result || "暂无明确结果记录"}
-                 </span>
-               </div>
-            </div>
-
           </div>
         ))}
       </div>
@@ -156,13 +143,13 @@ function DilemmaCard({ data }: { data: GroupedDilemma }) {
   );
 }
 
-// 辅助组件：根据评价显示不同颜色的文字
+// 颜色辅助函数
 function getResultColor(evaluation: string) {
   if (evaluation?.includes('正面')) return 'text-emerald-700';
   if (evaluation?.includes('负面')) return 'text-red-700';
   if (evaluation?.includes('失踪')) return 'text-purple-700';
   if (evaluation?.includes('伤病')) return 'text-rose-700';
-  if (evaluation?.includes('疾病')) return 'text-yellow-700'; // 疾病用土黄色/深黄色
+  if (evaluation?.includes('疾病')) return 'text-yellow-700';
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-stone-600';
 }
