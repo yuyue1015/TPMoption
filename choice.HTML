@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>困境选择结果搜索</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input[type="text"] { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ddd; }
+    button { padding: 10px 20px; border: none; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background-color: #45a049; }
+    .result { margin-top: 20px; }
+    .result-item { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    h3 { margin: 0; font-size: 18px; }
+    p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>困境选择搜索</h1>
+  <input type="text" id="searchInput" placeholder="输入困境名称进行搜索">
+  <button onclick="search()">搜索</button>
+
+  <div id="resultContainer" class="result"></div>
+
+  <script>
+    // 假设你已经将 CSV 数据转化为 JSON 数组
+    const dilemmas = [
+      { "name": "困境1", "choice1": "选择A", "choice1Result": "结果A", "choice2": "选择B", "choice2Result": "结果B" },
+      { "name": "困境2", "choice1": "选择C", "choice1Result": "结果C", "choice2": "选择D", "choice2Result": "结果D" },
+      // 你实际的数据将在此处填充
+    ];
+
+    function search() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const results = dilemmas.filter(dilemma =>
+        dilemma.name.toLowerCase().includes(query)
+      );
+
+      const resultContainer = document.getElementById("resultContainer");
+      resultContainer.innerHTML = ""; // 清空之前的结果
+
+      if (results.length === 0) {
+        resultContainer.innerHTML = "<p>没有找到相关困境，请尝试其他关键词。</p>";
+      } else {
+        results.forEach(dilemma => {
+          const div = document.createElement("div");
+          div.className = "result-item";
+          div.innerHTML = `
+            <h3>${dilemma.name}</h3>
+            <p><strong>选择1:</strong> ${dilemma.choice1}</p>
+            <p><strong>选择1结果:</strong> ${dilemma.choice1Result}</p>
+            <p><strong>选择2:</strong> ${dilemma.choice2}</p>
+            <p><strong>选择2结果:</strong> ${dilemma.choice2Result}</p>
+          `;
+          resultContainer.appendChild(div);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
