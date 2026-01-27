@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Map, Compass, AlertTriangle, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
+import { Search, Map, Compass, AlertTriangle } from 'lucide-react';
 import { DILEMMA_DATA, DilemmaRecord } from './dilemma-data';
 
-// 定义聚合后的数据结构：一个困境包含多个选项
+// 定义聚合后的数据结构
 interface GroupedDilemma {
   name: string;
   map: string;
@@ -58,7 +58,7 @@ export default function DilemmaSearchApp() {
             探险困境<span className="text-orange-600">生存指南</span>
           </h1>
           <p className="text-stone-500">
-            输入你在探险中遇到的困境，查看前人的选择与后果。
+            已收录 {DILEMMA_DATA.length} 条记录，助你避开危险。
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default function DilemmaSearchApp() {
           {!query ? (
             <div className="text-center py-20 opacity-40">
               <Map size={80} className="mx-auto mb-4 text-stone-300" />
-              <p className="text-xl">等待探险指令...</p>
+              <p className="text-xl">请输入关键词开始查询...</p>
             </div>
           ) : results.length > 0 ? (
             results.map((group) => (
@@ -125,29 +125,28 @@ function DilemmaCard({ data }: { data: GroupedDilemma }) {
       {/* 选项列表 */}
       <div className="divide-y divide-stone-100">
         {data.options.map((opt, idx) => (
-          <div key={idx} className="p-4 md:p-5 flex flex-col md:flex-row gap-4 md:items-start group hover:bg-orange-50/30 transition-colors">
+          <div key={idx} className="p-4 md:p-5 flex flex-col md:flex-row gap-2 md:gap-4 md:items-center group hover:bg-orange-50/30 transition-colors">
             
             {/* 左侧：选择 */}
             <div className="md:w-1/3 shrink-0">
               <span className="text-xs text-stone-400 uppercase font-bold tracking-wider mb-1 block">
                 你的选择
               </span>
-              <div className="font-bold text-stone-800 text-lg">
+              <div className="font-bold text-stone-800 text-lg leading-tight">
                 {opt.option}
               </div>
             </div>
 
-            {/* 右侧：结果 */}
+            {/* 右侧：结果 (修改点：去图标，加冒号，横排) */}
             <div className="flex-1">
-               <span className="text-xs text-stone-400 uppercase font-bold tracking-wider mb-1 block">
-                产生的后果
-              </span>
-              <div className="flex items-start gap-2">
-                <ResultIcon type={opt.evaluation} />
-                <p className={`text-sm md:text-base leading-relaxed ${getResultColor(opt.evaluation)}`}>
-                  {opt.result || "暂无明确结果记录"}
-                </p>
-              </div>
+               <div className="text-base">
+                 <span className="text-xs text-stone-400 uppercase font-bold tracking-wider mr-2">
+                   产生的后果：
+                 </span>
+                 <span className={`font-medium ${getResultColor(opt.evaluation)}`}>
+                   {opt.result || "暂无明确结果记录"}
+                 </span>
+               </div>
             </div>
 
           </div>
@@ -159,14 +158,11 @@ function DilemmaCard({ data }: { data: GroupedDilemma }) {
 
 // 辅助组件：根据评价显示不同颜色的文字
 function getResultColor(evaluation: string) {
-  if (evaluation?.includes('正面')) return 'text-emerald-700 font-medium';
-  if (evaluation?.includes('负面')) return 'text-red-700 font-medium';
+  if (evaluation?.includes('正面')) return 'text-emerald-700';
+  if (evaluation?.includes('负面')) return 'text-red-700';
+  if (evaluation?.includes('失踪')) return 'text-purple-700';
+  if (evaluation?.includes('伤病')) return 'text-rose-700';
+  if (evaluation?.includes('疾病')) return 'text-yellow-700'; // 疾病用土黄色/深黄色
+  if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-stone-600';
-}
-
-// 辅助组件：根据评价显示图标
-function ResultIcon({ type }: { type: string }) {
-  if (type?.includes('正面')) return <CheckCircle className="text-emerald-500 shrink-0 mt-0.5" size={18} />;
-  if (type?.includes('负面')) return <XCircle className="text-red-500 shrink-0 mt-0.5" size={18} />;
-  return <HelpCircle className="text-stone-400 shrink-0 mt-0.5" size={18} />;
 }
