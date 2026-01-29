@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =========================
+   全局基础语义与体验
+   ========================= */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    line-height: 1.65;
+  }
+
+  /* 标题的统一语义节奏（非常重要） */
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight text-slate-900;
+  }
+
+  p {
+    @apply text-slate-600;
+  }
+
+  a {
+    @apply text-blue-600 hover:text-blue-700 underline-offset-2;
+  }
+}
+
+/* =========================
+   工具型站点的通用组件
+   ========================= */
+
+@layer components {
+  /* 数据库/资料库常用标签样式 */
+  .tag {
+    @apply inline-flex items-center px-2.5 py-1 rounded
+           text-xs bg-slate-100 text-slate-600
+           border border-slate-200;
+  }
+
+  /* 轻量信息块（来源 / 数值 / 提示） */
+  .meta {
+    @apply text-xs text-slate-500 flex items-center gap-1.5;
+  }
+
+  /* 分隔线（列表型页面专用） */
+  .divider {
+    @apply border-b border-dashed border-slate-300;
+  }
+}
+
+/* =========================
+   搜索体验优化（你这个项目很关键）
+   ========================= */
+
+@layer utilities {
+  /* 搜索结果关键词高亮（预留） */
+  .highlight {
+    @apply bg-yellow-100 text-slate-900 font-semibold rounded px-0.5;
+  }
+
+  /* 让长列表滚动更顺 */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
