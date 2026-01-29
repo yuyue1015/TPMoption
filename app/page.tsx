@@ -106,7 +106,6 @@ export default function DilemmaSearchApp() {
           <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-6 py-3 bg-white rounded-2xl border border-slate-100 shadow-sm">
              <span className="text-slate-600 font-bold">欢迎关注 <span className="text-orange-600">悦小白游戏记</span></span>
              <span className="hidden sm:block text-slate-300">|</span>
-             <span className="text-slate-400 font-medium text-sm">小红书 @悦小白游戏记</span>
           </div>
         </div>
       </footer>
@@ -190,3 +189,4 @@ function getResultColor(evaluation: string) {
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-slate-600';
 }
+
