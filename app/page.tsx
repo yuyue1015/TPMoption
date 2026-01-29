@@ -54,19 +54,20 @@ export default function DilemmaSearchApp() {
         </p>
       </div>
 
-      {/* 3. 缩小搜索框的底部间距 (mb-12 -> mb-6) */}
-      <div className="bg-white p-2 rounded-xl shadow-sm border border-slate-200 mb-6 sticky top-2 z-20 max-w-2xl mx-auto flex gap-2 w-full">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-2.5 text-slate-400 w-4 h-4" />
-          <input 
-            type="text" 
-            className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 border-none text-sm focus:ring-2 focus:ring-orange-500 transition-all"
-            placeholder="搜索困境名称 (如: 上古战场)..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
-      </div>
+    {/* 搜索框 */}
+<div className="bg-white p-2 rounded-xl shadow-sm border border-slate-200 mb-6 sticky top-2 z-20 max-w-2xl mx-auto flex gap-2 w-full">
+  <div className="relative flex-1">
+    <Search className="absolute left-3 top-2.5 text-slate-400 w-4 h-4" />
+    <input 
+      type="text" 
+      /* 重点：确保这里有 text-[16px]，防止 iOS 点击时自动缩放 */
+      className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 border-none text-[16px] focus:ring-2 focus:ring-orange-500 transition-all"
+      placeholder="搜索困境名称 (如: 声东击西)..."
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+    />
+  </div>
+</div>
 
       {/* 4. 结果展示区：缩小初始占位图的间距 */}
       <div className="max-w-3xl mx-auto flex-1 w-full">
@@ -194,4 +195,5 @@ function getResultColor(evaluation: string) {
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-slate-600';
 }
+
 
