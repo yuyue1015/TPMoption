@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description: "双点博物馆探险困境选择与结果查询系统，生存指南及数据汇总。",
   applicationName: "Two Point Museum Expedition Guide",
   authors: [{ name: "悦小白" }],
+  // 1. 新增：关联你创建的 manifest.json 文件
+  manifest: "/manifest.json", 
+  // 2. 新增：针对 iOS 的专用配置
+  appleWebApp: {
+    capable: true,               // 允许全屏显示（隐藏 Safari 地址栏）
+    statusBarStyle: "default",   // 状态栏样式（电量、时间显示区域）
+    title: "探险指南",            // 在桌面上显示的 App 名称
+  },
+  // 3. 建议：设置主题颜色，会让 App 的启动顶栏颜色更统一
+  themeColor: "#ea580c", 
   robots: {
     index: true,
     follow: true,
@@ -33,3 +43,4 @@ export default function RootLayout({
     </html>
   );
 }
+
