@@ -88,39 +88,40 @@ export default function DilemmaSearchApp() {
         )}
       </div>
       
-      {/* 5. 缩小页脚与内容的间距 (mt-20 -> mt-6) 并优化布局 */}
-      <footer className="mt-6 pb-8 text-center border-t border-slate-100 pt-6 max-w-3xl mx-auto w-full">
-        <div className="mb-6">
-          <a 
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-2 bg-white border border-slate-200 rounded-full text-slate-600 text-sm font-bold hover:bg-orange-50 hover:text-orange-600 transition-all shadow-sm"
-          >
-            <span>📝 提交反馈 / 补充数据</span>
-            <ExternalLink size={12} />
-          </a>
-        </div>
+{/* 底部关注信息 */}
+<footer className="mt-6 pb-8 text-center border-t border-slate-100 pt-6 max-w-3xl mx-auto w-full">
+  <div className="mb-6">
+    <a 
+      href={FORM_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 px-6 py-2 bg-white border border-slate-200 rounded-full text-slate-600 text-sm font-bold hover:bg-orange-50 hover:text-orange-600 transition-all shadow-sm"
+    >
+      <span>📝 提交反馈 / 补充数据</span>
+      <ExternalLink size={12} />
+    </a>
+  </div>
 
-        <div className="space-y-3">
-          <p className="text-[10px] text-slate-300 uppercase tracking-widest font-sans">Data Source: Explorer Records</p>
-          <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-5 py-2.5 bg-white rounded-xl border border-slate-100 shadow-sm">
-             <span className="text-slate-600 font-bold text-sm">
-               欢迎关注 
-               <a 
-                 href="https://xhslink.com/m/4fdFysr8G7t" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="text-orange-600 hover:text-red-500 hover:underline decoration-2 underline-offset-4 ml-1"
-               >
-                 悦小白游戏记
-               </a>
-             </span>
-             <span className="hidden sm:block text-slate-200">|</span>
-             <span className="text-slate-400 font-medium text-xs font-sans">小红书 @悦小白游戏记</span>
-          </div>
-        </div>
-      </footer>
+  <div className="space-y-3">
+    <p className="text-[10px] text-slate-300 uppercase tracking-widest font-sans">Data Source: Explorer Records</p>
+    <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-5 py-2.5 bg-white rounded-xl border border-slate-100 shadow-sm">
+       <span className="text-slate-600 font-bold text-sm">
+         欢迎关注 
+         <a 
+           href="https://xhslink.com/m/4fdFysr8G7t" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           /* 这里增加了 underline 和样式优化 */
+           className="text-orange-600 underline decoration-orange-600/30 decoration-2 underline-offset-4 hover:text-red-500 hover:decoration-red-500 transition-all ml-1"
+         >
+           悦小白游戏记
+         </a>
+       </span>
+       <span className="hidden sm:block text-slate-200">|</span>
+       <span className="text-slate-400 font-medium text-xs font-sans">小红书 @悦小白游戏记</span>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
@@ -193,3 +194,4 @@ function getResultColor(evaluation: string) {
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-slate-600';
 }
+
