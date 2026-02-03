@@ -271,13 +271,14 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "260", dilemma: "危机之地", option: "留下除草", result: "探险行动时长:+7天,生物多样性等级降低", map: "远方群岛", evaluation: "负面" },
   { id: "261", dilemma: "沙漠救援行动", option: "潇洒狮幼崽", result: "特质：猫奴", map: "远方群岛", evaluation: "正面" },
   { id: "262", dilemma: "沙漠救援行动", option: "弹跳羚", result: "特质：痴迷哺乳类", map: "远方群岛", evaluation: "正面" },
-  { id: "263", dilemma: "你好，魔药商人", option: "力量魔药", result: "随行物品（力量魔药）,金钱-5000", map: "焦土世界", evaluation: "正面,负面" },
-  { id: "263", dilemma: "你好，魔药商人", option: "敏捷魔药", result: "随行物品（敏捷魔药）,金钱-5000", map: "焦土世界", evaluation: "正面,负面" },
-  { id: "263", dilemma: "你好，魔药商人", option: "今天不嗑药", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "263", dilemma: "得意洋洋", option: "绕开（调查勘探）", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "263", dilemma: "得意洋洋", option: "谈判", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "263", dilemma: "得意洋洋", option: "用食物哄它", result: "探险行动时长：-7天", map: "焦土世界", evaluation: "负面" }
+  { id: "264", dilemma: "你好，魔药商人", option: "力量魔药", result: "随行物品（力量魔药）,金钱-5000", map: "焦土世界", evaluation: "正面,负面" },
+  { id: "265", dilemma: "你好，魔药商人", option: "敏捷魔药", result: "随行物品（敏捷魔药）,金钱-5000", map: "焦土世界", evaluation: "正面,负面" },
+  { id: "266", dilemma: "你好，魔药商人", option: "今天不嗑药", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "267", dilemma: "得意洋洋", option: "绕开（调查勘探）", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "268", dilemma: "得意洋洋", option: "谈判", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "269", dilemma: "得意洋洋", option: "用食物哄它", result: "探险行动时长：-7天", map: "焦土世界", evaluation: "负面" }
 ];
+
 
 
 
