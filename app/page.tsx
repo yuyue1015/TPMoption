@@ -1,7 +1,17 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { Search, Compass, AlertTriangle, ExternalLink, Map, CheckCircle, XCircle, Skull, Zap } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { 
+  Search, 
+  Compass, 
+  AlertTriangle, 
+  ExternalLink, 
+  Map, 
+  CheckCircle, 
+  XCircle, 
+  Skull, 
+  Zap 
+} from 'lucide-react';
 import { DILEMMA_DATA, DilemmaRecord } from './dilemma-data';
 
 // --- 【配置区域】 ---
@@ -16,9 +26,15 @@ interface GroupedDilemma {
 
 export default function DilemmaSearchApp() {
   const [query, setQuery] = useState('');
+  const [hasMounted, setHasMounted] = useState(false);
+
+  // 1. 解决水合错误：确保页面只在客户端完全挂载后显示
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const results = useMemo(() => {
-    if (!query.trim()) return [];
+    if (!hasMounted || !query.trim()) return [];
     const lowerQuery = query.toLowerCase().trim();
 
     const filteredRows = DILEMMA_DATA.filter(item => 
@@ -35,13 +51,29 @@ export default function DilemmaSearchApp() {
     });
 
     return Object.values(groups);
-  }, [query]);
+  }, [query, hasMounted]);
+
+  // 挂载前保持空白，防止闪烁报错
+  if (!hasMounted) return <div className="min-h-screen bg-slate-50" />;
 
   return (
-    // 1. 缩小整体页面的上下内边距 (py-8 md:py-12 -> py-4 md:py-6)
-    <div className="py-4 md:py-6 min-h-screen flex flex-col">
+    <div className="py-4 md:py-6 min-h-screen flex flex-col antialiased bg-slate-50">
       
-      {/* 2. 缩小标题区域的底部间距 (mb-10 -> mb-4) */}
+      {/* 顶部 Banner - 缩小居中显示 */}
+      <div className="w-full flex justify-center mb-6 px-4">
+        <a 
+          href="/" 
+          className="block w-[70%] md:w-[40%] max-w-[400px] aspect-[3/1] relative overflow-hidden rounded-xl shadow-sm border border-slate-100 bg-white hover:shadow-md transition-all"
+        >
+          <img 
+            src="/banner.png" 
+            alt="探险困境生存指南" 
+            className="w-full h-full object-contain"
+          />
+        </a>
+      </div>
+
+      {/* 标题区域 */}
       <div className="text-center mb-4">
         <div className="inline-flex p-2 bg-orange-500 rounded-xl text-white mb-2 shadow-md shadow-orange-100">
           <Compass size={28} />
@@ -54,27 +86,28 @@ export default function DilemmaSearchApp() {
         </p>
       </div>
 
-    {/* 搜索框 */}
-<div className="bg-white p-2 rounded-xl shadow-sm border border-slate-200 mb-6 sticky top-2 z-20 max-w-2xl mx-auto flex gap-2 w-full">
-  <div className="relative flex-1">
-    <Search className="absolute left-3 top-2.5 text-slate-400 w-4 h-4" />
-    <input 
-      type="text" 
-      /* 重点：确保这里有 text-[16px]，防止 iOS 点击时自动缩放 */
-      className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 border-none text-[16px] focus:ring-2 focus:ring-orange-500 transition-all"
-      placeholder="搜索困境名称 (如: 声东击西)..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-    />
-  </div>
-</div>
+      {/* 搜索框 - 优化字号且防止 iOS 缩放 */}
+      <div className="bg-white p-1.5 rounded-xl shadow-sm border border-slate-200 mb-6 sticky top-2 z-20 max-w-2xl mx-auto flex gap-1.5 w-[92%]">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-2.5 text-slate-400 w-3.5 h-3.5" />
+          <input 
+            type="text" 
+            className="w-full pl-9 pr-4 py-2 rounded-lg bg-slate-50 border-none placeholder:text-slate-400 focus:ring-1 focus:ring-orange-500 outline-none transition-all"
+            placeholder="搜索困境名称 (如: 声东击西)..."
+            // 物理 16px 防止 iOS 缩放，视觉通过 scale 缩小至 13px
+            style={{ fontSize: '16px', transform: 'scale(0.8125)', transformOrigin: 'left center', width: '123%' }}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+      </div>
 
-      {/* 4. 结果展示区：缩小初始占位图的间距 */}
-      <div className="max-w-3xl mx-auto flex-1 w-full">
+      {/* 结果展示区 */}
+      <div className="max-w-3xl mx-auto flex-1 w-full px-4">
         {!query ? (
           <div className="flex flex-col items-center text-slate-300 mt-6 mb-6">
             <Zap className="w-12 h-12 mb-2 opacity-10" />
-            <p className="text-base font-medium">输入指令开启生存检索</p>
+            <p className="text-sm font-medium">输入指令开启生存检索</p>
           </div>
         ) : results.length > 0 ? (
           <div className="space-y-6">
@@ -89,40 +122,39 @@ export default function DilemmaSearchApp() {
         )}
       </div>
       
-{/* 底部关注信息 */}
-<footer className="mt-6 pb-8 text-center border-t border-slate-100 pt-6 max-w-3xl mx-auto w-full">
-  <div className="mb-6">
-    <a 
-      href={FORM_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 px-6 py-2 bg-white border border-slate-200 rounded-full text-slate-600 text-sm font-bold hover:bg-orange-50 hover:text-orange-600 transition-all shadow-sm"
-    >
-      <span>📝 提交反馈 / 补充数据</span>
-      <ExternalLink size={12} />
-    </a>
-  </div>
+      {/* 底部关注信息 */}
+      <footer className="mt-8 pb-10 text-center border-t border-slate-200 pt-8 max-w-3xl mx-auto w-full px-4">
+        <div className="mb-6">
+          <a 
+            href={FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-white border border-slate-200 rounded-full text-slate-600 text-sm font-bold hover:bg-orange-50 hover:text-orange-600 transition-all shadow-sm"
+          >
+            <span>📝 提交反馈 / 补充数据</span>
+            <ExternalLink size={12} />
+          </a>
+        </div>
 
-  <div className="space-y-3">
-    <p className="text-[10px] text-slate-300 uppercase tracking-widest font-sans">Data Source: Explorer Records</p>
-    <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-5 py-2.5 bg-white rounded-xl border border-slate-100 shadow-sm">
-       <span className="text-slate-600 font-bold text-sm">
-         欢迎关注 
-         <a 
-           href="https://xhslink.com/m/4fdFysr8G7t" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           /* 这里增加了 underline 和样式优化 */
-           className="text-orange-600 underline decoration-orange-600/30 decoration-2 underline-offset-4 hover:text-red-500 hover:decoration-red-500 transition-all ml-1"
-         >
-           悦小白游戏记
-         </a>
-       </span>
-       <span className="hidden sm:block text-slate-200">|</span>
-       <span className="text-slate-400 font-medium text-xs font-sans">小红书 @悦小白游戏记</span>
-    </div>
-  </div>
-</footer>
+        <div className="space-y-3">
+          <p className="text-[10px] text-slate-300 uppercase tracking-widest font-sans">Data Source: Explorer Records</p>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-5 py-2.5 bg-white rounded-xl border border-slate-100 shadow-sm">
+             <span className="text-slate-600 font-bold text-sm">
+                欢迎关注 
+                <a 
+                  href="https://xhslink.com/m/4fdFysr8G7t" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-orange-600 underline decoration-orange-600/30 decoration-2 underline-offset-4 hover:text-red-500 hover:decoration-red-500 transition-all ml-1"
+                >
+                  悦小白游戏记
+                </a>
+             </span>
+             <span className="hidden sm:block text-slate-200">|</span>
+             <span className="text-slate-400 font-medium text-xs font-sans">小红书 @悦小白游戏记</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -131,7 +163,6 @@ export default function DilemmaSearchApp() {
 function DilemmaCard({ data }: { data: GroupedDilemma }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all">
-      {/* 卡片头部：减小内边距 (py-5 -> py-3) */}
       <div className="bg-slate-50/80 px-5 py-3 border-b border-slate-100 flex flex-wrap justify-between items-center gap-3">
         <div className="flex items-center gap-2">
           <AlertTriangle className="text-orange-500 w-4 h-4" />
@@ -145,7 +176,6 @@ function DilemmaCard({ data }: { data: GroupedDilemma }) {
         </div>
       </div>
 
-      {/* 选项列表：减小内边距 (py-6 -> py-4) */}
       <div className="divide-y divide-dashed divide-slate-100 px-5">
         {data.options.map((opt, idx) => (
           <div key={idx} className="py-4 group transition-colors hover:bg-orange-50/20 -mx-5 px-5">
@@ -195,5 +225,3 @@ function getResultColor(evaluation: string) {
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-slate-600';
 }
-
-
