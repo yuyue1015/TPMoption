@@ -75,9 +75,7 @@ export default function DilemmaSearchApp() {
 
       {/* 标题区域 */}
       <div className="text-center mb-4">
-        <div className="inline-flex p-2 bg-orange-500 rounded-xl text-white mb-2 shadow-md shadow-orange-100">
-          <Compass size={28} />
-        </div>
+
         <h1 className="text-2xl md:text-4xl font-black text-slate-900 mb-1 tracking-tight">
           探险困境<span className="text-orange-600">生存指南</span>
         </h1>
@@ -225,3 +223,4 @@ function getResultColor(evaluation: string) {
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-slate-600';
 }
+
