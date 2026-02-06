@@ -5,16 +5,19 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "双点博物馆探险困境指南 | 悦小白游戏记",
+  title: "双点博物馆探险困境指南",
   description: "双点博物馆探险困境选择与结果查询系统，生存指南及数据汇总。",
   applicationName: "Two Point Museum Expedition Guide",
-  authors: [{ name: "悦小白" }],
+  authors: [{ name: "悦小白游戏记" }],
   // 1. 新增：关联你创建的 manifest.json 文件
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "探险指南",
+    title: "探险困境指南",
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
   },
   // 显式添加图标配置
   icons: {
@@ -40,5 +43,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
