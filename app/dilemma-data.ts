@@ -40,7 +40,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "30", dilemma: "阳光直射", option: "寻找阴凉处(调查勘探)", result: "士气高涨", map: "白骨带", evaluation: "正面" },
   { id: "31", dilemma: "荒野求蛇", option: "喂他", result: "【伤病】蛇咬", map: "白骨带", evaluation: "伤病" },
   { id: "32", dilemma: "荒野求蛇", option: "吃它", result: "士气高涨", map: "白骨带", evaluation: "正面" },
-  { id: "33", dilemma: "无聊游戏", option: "返回基地", result: "士气高涨", map: "双点海, 白骨带", evaluation: "正面" },
+  { id: "33", dilemma: "无聊游戏", option: "返回基地", result: "士气高涨, 金钱-1500, 探险行动时长+7天", map: "双点海, 白骨带", evaluation: "正面,负面" },
   { id: "34", dilemma: "无聊游戏", option: "别想游戏了", result: "士气低落", map: "双点海, 白骨带", evaluation: "负面" },
   { id: "35", dilemma: "无聊游戏", option: "找点其他东西玩(分析)", result: "士气高涨", map: "双点海, 白骨带", evaluation: "正面" },
   { id: "36", dilemma: "荒凉小镇", option: "过去打个招呼", result: "士气高涨", map: "白骨带", evaluation: "正面" },
@@ -141,7 +141,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "131", dilemma: "战还是逃", option: "先下手为强", result: "直升机受损, 展示品品质-1", map: "已知宇宙", evaluation: "负面" },
   { id: "132", dilemma: "战还是逃", option: "带我们去见你们的首领", result: "探险行动时长：-7天", map: "已知宇宙", evaluation: "正面" },
   { id: "133", dilemma: "战还是逃", option: "更改路线", result: "探险行动时长：+7天", map: "已知宇宙", evaluation: "负面" },
-  { id: "134", dilemma: "寻宝之旅", option: "进入裂隙寻找宝藏", result: "探险行动时长：+3天, 金钱+5000", map: "白骨带", evaluation: "负面,正面" },
+  { id: "134", dilemma: "寻宝之旅", option: "进入裂隙寻找宝藏", result: "探险行动时长：+3天, 金钱+5000 或 探险行动时长：+3天, 士气低落", map: "白骨带", evaluation: "负面,正面" },
   { id: "135", dilemma: "寻宝之旅", option: "跳过裂隙", result: "【伤病】痛痛腿", map: "白骨带", evaluation: "伤病" },
   { id: "136", dilemma: "寻宝之旅", option: "返回直升机！", result: "无事发生", map: "白骨带", evaluation: "中性" },
   { id: "137", dilemma: "巫术时刻", option: "当然可以，难道他还会吃人？", result: "失踪, 随行物品（疾病万能药）", map: "冥界", evaluation: "失踪,正面" },
@@ -177,7 +177,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "167", dilemma: "闻声辩路", option: "远处倾听（调查勘探）", result: "探险行动时长：+2天, 士气高涨", map: "已知宇宙", evaluation: "负面,正面" },
   { id: "168", dilemma: "加冰", option: "等待救援", result: "展示品品质-1", map: "低端科技地穴", evaluation: "负面" },
   { id: "169", dilemma: "加冰", option: "取暖（荒野求生）", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
-  { id: "170", dilemma: "加冰", option: "踹门", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
+  { id: "170", dilemma: "加冰", option: "踹门", result: "经验奖励+5%或【伤病】痛痛腿", map: "低端科技地穴", evaluation: "正面,负面" },
   { id: "171", dilemma: "巨喵来袭", option: "快逃", result: "未知", map: "双点海", evaluation: "中性" },
   { id: "172", dilemma: "巨喵来袭", option: "嘘……别出声", result: "经验奖励+5%", map: "双点海", evaluation: "正面" },
   { id: "173", dilemma: "巨喵来袭", option: "慧眼如炬（巡逻监管）", result: "未知", map: "双点海", evaluation: "中性" },
@@ -205,7 +205,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "195", dilemma: "壮观的沉船", option: "不管他", result: "无事发生", map: "双点海", evaluation: "负面" },
   { id: "196", dilemma: "壮观的沉船", option: "寻宝", result: "探险行动时长：+7天, 金钱+15000", map: "双点海", evaluation: "负面,正面" },
   { id: "197", dilemma: "幻象重重", option: "想游就游吧", result: "【伤病】痛痛腿", map: "白骨带", evaluation: "负面" },
-  { id: "198", dilemma: "幻象重重", option: "拦住他", result: "未知", map: "白骨带", evaluation: "中性" },
+  { id: "198", dilemma: "幻象重重", option: "拦住他", result: "【伤病】痛痛腿", map: "白骨带", evaluation: "负面" },
   { id: "199", dilemma: "宝藏时刻", option: "打开宝箱", result: "【伤病】碎脸", map: "焦土世界", evaluation: "负面" },
   { id: "200", dilemma: "宝藏时刻", option: "当做没看到", result: "经验奖励+100%", map: "焦土世界", evaluation: "正面" },
   { id: "201", dilemma: "宝藏时刻", option: "探测（龙之智慧）", result: "未知", map: "焦土世界", evaluation: "中性" },
@@ -276,8 +276,13 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "266", dilemma: "你好，魔药商人", option: "今天不嗑药", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "267", dilemma: "得意洋洋", option: "绕开（调查勘探）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "268", dilemma: "得意洋洋", option: "谈判", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "269", dilemma: "得意洋洋", option: "用食物哄它", result: "探险行动时长：-7天", map: "焦土世界", evaluation: "负面" }
+  { id: "269", dilemma: "得意洋洋", option: "用食物哄它", result: "探险行动时长：-7天", map: "焦土世界", evaluation: "负面" },
+  { id: "270", dilemma: "偶遇野人", option: "建造冰堡", result: "探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
+  { id: "271", dilemma: "偶遇野人", option: "上前搭话", result: "未知", map: "白骨带", evaluation: "中性" },
+ { id: "272", dilemma: "燃烧的怒火", option: "堵住西边的路（拯救祈愿村）", result: "恶龙之怒：仙灵谷调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
+   { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" }
 ];
+
 
 
 
