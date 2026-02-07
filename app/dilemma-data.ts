@@ -190,7 +190,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "180", dilemma: "声东击西", option: "给她指路", result: "金钱-500, 直升机受损", map: "冥界", evaluation: "负面" },
   { id: "181", dilemma: "声东击西", option: "无视老奶奶", result: "士气低落。", map: "冥界", evaluation: "负面" },
   { id: "182", dilemma: "声东击西", option: "让孩子们来帮助老妇人", result: "经验奖励+5%, 金钱-50, 探险行动时长：+1天", map: "冥界", evaluation: "正面,负面" },
-  { id: "183", dilemma: "走到哪塌到哪", option: "塌方了！快跑！", result: "未知", map: "白骨带", evaluation: "中性" },
+  { id: "183", dilemma: "走到哪塌到哪", option: "塌方了！快跑！", result: "士气高涨", map: "白骨带", evaluation: "正面" },
   { id: "184", dilemma: "走到哪塌到哪", option: "应该是错觉吧", result: "探险行动时长：+3天,展品特质：快速损坏", map: "白骨带", evaluation: "负面" },
   { id: "185", dilemma: "走到哪塌到哪", option: "保护展示品", result: "【伤病】痛痛腿, 探险行动时长：+2天", map: "白骨带", evaluation: "伤病,负面" },
   { id: "186", dilemma: "水，给我水……", option: "浅尝一小口海水", result: "【疾病】泥铲炎", map: "双点海", evaluation: "疾病" },
@@ -274,14 +274,15 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "264", dilemma: "你好，魔药商人", option: "力量魔药", result: "随行物品（力量魔药）,金钱-5000", map: "焦土世界", evaluation: "正面,负面" },
   { id: "265", dilemma: "你好，魔药商人", option: "敏捷魔药", result: "随行物品（敏捷魔药）,金钱-5000", map: "焦土世界", evaluation: "正面,负面" },
   { id: "266", dilemma: "你好，魔药商人", option: "今天不嗑药", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "267", dilemma: "得意洋洋", option: "绕开（调查勘探）", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "268", dilemma: "得意洋洋", option: "谈判", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "269", dilemma: "得意洋洋", option: "用食物哄它", result: "探险行动时长：-7天", map: "焦土世界", evaluation: "负面" },
+  { id: "267", dilemma: "得意羊羊", option: "绕开（调查勘探）", result: "士气高涨，探险行动时长：-4天", map: "焦土世界", evaluation: "正面" },
+  { id: "268", dilemma: "得意羊羊", option: "谈判", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "269", dilemma: "得意羊羊", option: "用食物哄它", result: "探险行动时长：-7天", map: "焦土世界", evaluation: "负面" },
   { id: "270", dilemma: "偶遇野人", option: "建造冰堡", result: "探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
   { id: "271", dilemma: "偶遇野人", option: "上前搭话", result: "未知", map: "白骨带", evaluation: "中性" },
  { id: "272", dilemma: "燃烧的怒火", option: "堵住西边的路（拯救祈愿村）", result: "恶龙之怒：仙灵谷调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
    { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" }
 ];
+
 
 
 
