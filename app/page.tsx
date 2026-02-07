@@ -80,7 +80,7 @@ export default function DilemmaSearchApp() {
           探险困境<span className="text-orange-600">生存指南</span>
         </h1>
         <p className="text-slate-400 text-xs font-medium">
-          已收录 {DILEMMA_DATA.length} 条探险记录
+          已收录 {DILEMMA_DATA.length} 条探险记录 | 更新时间2026年2月7日
         </p>
       </div>
 
@@ -223,4 +223,5 @@ function getResultColor(evaluation: string) {
   if (evaluation?.includes('诅咒')) return 'text-indigo-700';
   return 'text-slate-600';
 }
+
 
