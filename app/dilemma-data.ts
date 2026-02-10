@@ -258,7 +258,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "247", dilemma: "巢摇过市", option: "带走魔药", result: "随行物品（无敌药水）", map: "焦土世界", evaluation: "正面" },
   { id: "248", dilemma: "上古战场", option: "帮忙", result: "特质：打工牛马", map: "焦土世界", evaluation: "正面" },
   { id: "249", dilemma: "上古战场", option: "不帮忙", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "250", dilemma: "迷失矿洞", option: "继续往前走", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "250", dilemma: "迷失矿洞", option: "继续往前走", result: "探险行动时长:+7天,经验奖励+150%", map: "焦土世界", evaluation: "正面" },
   { id: "251", dilemma: "迷失矿洞", option: "坐上矿车", result: "士气高涨, 探险行动时长：+3天", map: "焦土世界", evaluation: "中性" },
   { id: "252", dilemma: "迷失矿洞", option: "挖矿装备？（矮人庇佑）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "253", dilemma: "危险峭壁", option: "迎难而上", result: "特质：打工牛马", map: "远方群岛", evaluation: "正面" },
@@ -280,13 +280,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "270", dilemma: "偶遇野人", option: "建造冰堡", result: "探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
   { id: "271", dilemma: "偶遇野人", option: "上前搭话", result: "未知", map: "白骨带", evaluation: "中性" },
  { id: "272", dilemma: "燃烧的怒火", option: "堵住西边的路（拯救祈愿村）", result: "恶龙之怒：仙灵谷调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
-   { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" }
+   { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
+     { id: "274", dilemma: "说得比唱的好听", option: "去冒险吧", result: "未知", map: "焦土世界", evaluation: "中性" },
+   { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
+    { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
 ];
-
-
-
-
-
-
-
-
