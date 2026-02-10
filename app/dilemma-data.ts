@@ -117,7 +117,10 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "107", dilemma: "烦人鬼", option: "跟它讲道理", result: "经验奖励+15%", map: "冥界", evaluation: "正面" },
   { id: "108", dilemma: "凡事讲概率", option: "冒险穿越（随机一项）", result: "士气低落, 无事发生", map: "已知宇宙", evaluation: "负面,中性" },
   { id: "109", dilemma: "凡事讲概率", option: "采取回避行动（随机一项）", result: "直升机受损, 【伤病】碎脸", map: "已知宇宙", evaluation: "负面,伤病" },
-  { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）（失踪或其他2项）", result: "失踪, 经验奖励+1%, 探险行动时长：+5天, 探险行动时长：+2天", map: "已知宇宙", evaluation: "失踪,中性" },
+  { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "失踪", map: "已知宇宙", evaluation: "失踪" },
+  { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "经验奖励+1%", map: "已知宇宙", evaluation: "正面" },
+  { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "探险行动时长：+5天", map: "已知宇宙", evaluation: "负面" },
+  { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "探险行动时长：+2天", map: "已知宇宙", evaluation: "负面" },
   { id: "111", dilemma: "蛇宝宝", option: "收养它", result: "金钱-1000, 探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
   { id: "112", dilemma: "蛇宝宝", option: "这是陷阱！", result: "士气高涨", map: "白骨带", evaluation: "正面" },
   { id: "113", dilemma: "犯法公民", option: "帮助女人", result: "探险行动时长：+2天, 金钱-500", map: "冥界", evaluation: "负面" },
@@ -285,3 +288,4 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
    { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
     { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
 ];
+
