@@ -109,6 +109,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "99", dilemma: "扬眉吐气", option: "无视", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
   { id: "100", dilemma: "扬眉吐气", option: "放它出来", result: "【疾病】连眉", map: "低端科技地穴", evaluation: "疾病" },
   { id: "101", dilemma: "扬眉吐气", option: "麻醉后进行评估（分析）", result: "【疾病】连眉", map: "低端科技地穴", evaluation: "疾病" },
+  { id: "101", dilemma: "扬眉吐气", option: "麻醉后进行评估（分析）", result: "经验奖励+10%XP", map: "低端科技地穴", evaluation: "正面" },
   { id: "102", dilemma: "奶酪小行星", option: "炸出一条路", result: "随行物品（5x职等奶酪）", map: "已知宇宙", evaluation: "正面" },
   { id: "103", dilemma: "奶酪小行星", option: "穿过小行星群", result: "特质：知名奶酪", map: "已知宇宙", evaluation: "正面" },
   { id: "104", dilemma: "奶酪小行星", option: "派遣勤杂工去奶酪主舰求援（概率金钱）", result: "失踪, 金钱+10000", map: "已知宇宙", evaluation: "失踪,正面" },
@@ -144,7 +145,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "131", dilemma: "战还是逃", option: "先下手为强", result: "直升机受损, 展示品品质-1", map: "已知宇宙", evaluation: "负面" },
   { id: "132", dilemma: "战还是逃", option: "带我们去见你们的首领", result: "探险行动时长：-7天", map: "已知宇宙", evaluation: "正面" },
   { id: "133", dilemma: "战还是逃", option: "更改路线", result: "探险行动时长：+7天", map: "已知宇宙", evaluation: "负面" },
-  { id: "134", dilemma: "寻宝之旅", option: "进入裂隙寻找宝藏", result: "探险行动时长：+3天, 金钱+5000 或 探险行动时长：+3天, 士气低落", map: "白骨带", evaluation: "负面,正面" },
+  { id: "134", dilemma: "寻宝之旅", option: "进入裂隙寻找宝藏", result: "探险行动时长：+3天, 金钱+5000 ", map: "白骨带", evaluation: "正面" },
+  { id: "134", dilemma: "寻宝之旅", option: "进入裂隙寻找宝藏", result: "探险行动时长：+3天, 士气低落", map: "白骨带", evaluation: "负面" },
   { id: "135", dilemma: "寻宝之旅", option: "跳过裂隙", result: "【伤病】痛痛腿", map: "白骨带", evaluation: "伤病" },
   { id: "136", dilemma: "寻宝之旅", option: "返回直升机！", result: "无事发生", map: "白骨带", evaluation: "中性" },
   { id: "137", dilemma: "巫术时刻", option: "当然可以，难道他还会吃人？", result: "失踪, 随行物品（疾病万能药）", map: "冥界", evaluation: "失踪,正面" },
@@ -180,7 +182,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "167", dilemma: "闻声辩路", option: "远处倾听（调查勘探）", result: "探险行动时长：+2天, 士气高涨", map: "已知宇宙", evaluation: "负面,正面" },
   { id: "168", dilemma: "加冰", option: "等待救援", result: "展示品品质-1", map: "低端科技地穴", evaluation: "负面" },
   { id: "169", dilemma: "加冰", option: "取暖（荒野求生）", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
-  { id: "170", dilemma: "加冰", option: "踹门", result: "经验奖励+5%或【伤病】痛痛腿", map: "低端科技地穴", evaluation: "中性" },
+  { id: "170", dilemma: "加冰", option: "踹门", result: "经验奖励+5%", map: "低端科技地穴", evaluation: "正面" },
+  { id: "170", dilemma: "加冰", option: "踹门", result: "【伤病】痛痛腿", map: "低端科技地穴", evaluation: "负面" },
   { id: "171", dilemma: "巨喵来袭", option: "快逃", result: "【伤病】痛痛腿", map: "双点海", evaluation: "负面" },
   { id: "172", dilemma: "巨喵来袭", option: "嘘……别出声", result: "经验奖励+5%", map: "双点海", evaluation: "正面" },
   { id: "173", dilemma: "巨喵来袭", option: "慧眼如炬（巡逻监管）", result: "未知", map: "双点海", evaluation: "中性" },
@@ -188,7 +191,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "175", dilemma: "地心之城", option: "送点零食", result: "未知", map: "白骨带", evaluation: "中性" },
   { id: "176", dilemma: "地心之城", option: "问路", result: "士气高涨, 探险行动时长：-7天", map: "白骨带", evaluation: "正面" },
   { id: "177", dilemma: "玩水", option: "来点大水花", result: "经验奖励+50%, 【疾病】泥铲炎", map: "白骨带", evaluation: "正面,疾病" },
-  { id: "178", dilemma: "玩水", option: "有风险继续前进", result: "士气低落或无事发生", map: "白骨带", evaluation: "负面" },
+  { id: "178", dilemma: "玩水", option: "有风险继续前进", result: "士气低落", map: "白骨带", evaluation: "负面" },
+  { id: "178", dilemma: "玩水", option: "有风险继续前进", result: "无事发生", map: "白骨带", evaluation: "中性" },
   { id: "179", dilemma: "玩水", option: "研究水样", result: "士气高涨,经验奖励+10%", map: "白骨带", evaluation: "正面" },
   { id: "180", dilemma: "声东击西", option: "给她指路", result: "金钱-500, 直升机受损", map: "冥界", evaluation: "负面" },
   { id: "181", dilemma: "声东击西", option: "无视老奶奶", result: "士气低落。", map: "冥界", evaluation: "负面" },
@@ -213,7 +217,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "200", dilemma: "宝藏时刻", option: "当做没看到", result: "经验奖励+100%", map: "焦土世界", evaluation: "正面" },
   { id: "201", dilemma: "宝藏时刻", option: "探测（龙之智慧）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "202", dilemma: "黑洞惊魂", option: "反向推进", result: "展示品品质-1", map: "已知宇宙", evaluation: "负面" },
-  { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气高涨, 直升机受损, 士气低落, 探险行动时长：+7天", map: "已知宇宙", evaluation: "中性" },
+  { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气高涨, 直升机受损", map: "已知宇宙", evaluation: "中性" },
+  { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气低落, 探险行动时长：+7天", map: "已知宇宙", evaluation: "负面" },
   { id: "204", dilemma: "脚部宕机", option: "再撑一下", result: "士气高涨, 【伤病】冻脚, 经验奖励+10%", map: "已知宇宙", evaluation: "正面,伤病" },
   { id: "205", dilemma: "脚部宕机", option: "修补靴子", result: "直升机受损, 探险行动时长：+7天, 经验奖励+5%", map: "已知宇宙", evaluation: "负面,正面" },
   { id: "206", dilemma: "脚部宕机", option: "快速修复（机械学）", result: "士气高涨", map: "已知宇宙", evaluation: "正面" },
@@ -288,4 +293,5 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
    { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
     { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
 ];
+
 
