@@ -21,7 +21,12 @@ const FORM_URL = "https://my.feishu.cn/share/base/form/shrcnL8QkRKAuxL5J6FuT2nVO
 interface GroupedDilemma {
   name: string;
   map: string;
-  options: DilemmaRecord[];
+  options: GroupedOption[];
+}
+
+interface GroupedOption {
+  option: string;
+  records: DilemmaRecord[];
 }
 
 export default function DilemmaSearchApp() {
@@ -47,7 +52,15 @@ export default function DilemmaSearchApp() {
       if (!groups[row.dilemma]) {
         groups[row.dilemma] = { name: row.dilemma, map: row.map, options: [] };
       }
-      groups[row.dilemma].options.push(row);
+
+      const optionGroups = groups[row.dilemma].options;
+      const sameOption = optionGroups.find((opt) => opt.option === row.option);
+
+      if (sameOption) {
+        sameOption.records.push(row);
+      } else {
+        optionGroups.push({ option: row.option, records: [row] });
+      }
     });
 
     return Object.values(groups);
@@ -189,14 +202,24 @@ function DilemmaCard({ data }: { data: GroupedDilemma }) {
                 </div>
               </div>
               
-              <div className="ml-7 p-3 bg-slate-50/50 rounded-xl border border-transparent group-hover:bg-white group-hover:border-orange-100 transition-all">
-                <div className="flex items-start gap-2">
-                  <ResultIcon type={opt.evaluation} />
-                  <p className={`text-sm font-bold leading-relaxed ${getResultColor(opt.evaluation)}`}>
-                    {opt.result || "暂无记录"}
-                  </p>
+              <div className="ml-7 space-y-2">
+                {opt.records.map((record) => (
+                  <div
+                    key={record.id}
+                    className="p-3 bg-slate-50/50 rounded-xl border border-transparent group-hover:bg-white group-hover:border-orange-100 transition-all"
+                  >
+                    <div className="flex items-start gap-2">
+                      <ResultIcon type={record.evaluation} />
+                      <p className={`text-sm font-bold leading-relaxed ${getResultColor(record.evaluation)}`}>
+                        {record.result || '暂无记录'}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {opt.records.length > 1 && (
+                  <p className="text-[11px] text-slate-400">该选项存在 {opt.records.length} 条结果</p>
+                )}
                 </div>
-              </div>
             </div>
           </div>
         ))}
