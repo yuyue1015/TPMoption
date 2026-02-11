@@ -229,6 +229,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "211", dilemma: "巨魔为谁收债", option: "失物我来领", result: "随行物品（敏捷魔药）", map: "焦土世界", evaluation: "正面" },
   { id: "212", dilemma: "女巫之夜", option: "不了，谢谢", result: "经验奖励+25% ", map: "焦土世界", evaluation: "正面" },
   { id: "213", dilemma: "女巫之夜", option: "喝几杯再走", result: "特质：聪慧", map: "焦土世界", evaluation: "正面" },
+  { id: "213", dilemma: "女巫之夜", option: "喝几杯再走", result: "特质：文弱", map: "焦土世界", evaluation: "负面" },
   { id: "214", dilemma: "女巫之夜", option: "有人喜欢听鲁特宝琴吗？（鲁特宝琴）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "215", dilemma: "美中不足", option: "美中不足", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "216", dilemma: "美中不足", option: "把石头圈补好", result: "特质：矮人庇佑", map: "焦土世界", evaluation: "正面" },
@@ -287,11 +288,12 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "269", dilemma: "得意羊羊", option: "用食物哄它", result: "探险行动时长：-7天,无事发生", map: "焦土世界", evaluation: "正面" },
   { id: "270", dilemma: "偶遇野人", option: "建造冰堡", result: "探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
   { id: "271", dilemma: "偶遇野人", option: "上前搭话", result: "未知", map: "白骨带", evaluation: "中性" },
- { id: "272", dilemma: "燃烧的怒火", option: "堵住西边的路（拯救祈愿村）", result: "恶龙之怒：仙灵谷调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
-   { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
-     { id: "274", dilemma: "说得比唱的好听", option: "去冒险吧", result: "未知", map: "焦土世界", evaluation: "中性" },
-   { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
-    { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
+  { id: "272", dilemma: "燃烧的怒火", option: "堵住西边的路（拯救祈愿村）", result: "恶龙之怒：仙灵谷调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
+  { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
+  { id: "274", dilemma: "说得比唱的好听", option: "去冒险吧", result: "士气低落", map: "焦土世界", evaluation: "负面" },
+  { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
+  { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
 ];
+
 
 
