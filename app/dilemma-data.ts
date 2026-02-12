@@ -234,7 +234,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "215", dilemma: "美中不足", option: "美中不足", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "216", dilemma: "美中不足", option: "把石头圈补好", result: "特质：矮人庇佑", map: "焦土世界", evaluation: "正面" },
   { id: "217", dilemma: "美中不足", option: "跳支小舞（矮人庇佑）", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "218", dilemma: "切断，突围", option: "带走龙爪碎片", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "218", dilemma: "切断，突围", option: "带走龙爪碎片", result: "龙之力量,特质：破军杀龙", map: "焦土世界", evaluation: "正面" },
   { id: "219", dilemma: "切断，突围", option: "带走烧焦的龙鳞", result: "特质：火焰护盾, 特质：破军杀龙", map: "焦土世界", evaluation: "正面" },
   { id: "220", dilemma: "无火不起烟", option: "走近路", result: "探险行动时长:-6天,生物多样性等级降低", map: "焦土世界", evaluation: "中性" },
   { id: "221", dilemma: "无火不起烟", option: "绕远路", result: "未知", map: "焦土世界", evaluation: "中性" },
@@ -294,6 +294,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
   { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
 ];
+
 
 
 
