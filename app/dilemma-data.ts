@@ -215,6 +215,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "198", dilemma: "幻象重重", option: "拦住他", result: "【伤病】痛痛腿,探险行动时长：+6天", map: "白骨带", evaluation: "负面" },
   { id: "199", dilemma: "宝藏时刻", option: "打开宝箱", result: "【伤病】碎脸", map: "焦土世界", evaluation: "负面" },
   { id: "200", dilemma: "宝藏时刻", option: "当做没看到", result: "经验奖励+100%", map: "焦土世界", evaluation: "正面" },
+  { id: "200", dilemma: "宝藏时刻", option: "当做没看到", result: "无事发生", map: "焦土世界", evaluation: "中性" },
   { id: "201", dilemma: "宝藏时刻", option: "探测（龙之智慧）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "202", dilemma: "黑洞惊魂", option: "反向推进", result: "展示品品质-1", map: "已知宇宙", evaluation: "负面" },
   { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气高涨, 直升机受损", map: "已知宇宙", evaluation: "中性" },
@@ -240,6 +241,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "221", dilemma: "无火不起烟", option: "绕远路", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "222", dilemma: "无火不起烟", option: "安全路线（荒野求生）", result: "经验奖励+5%", map: "焦土世界", evaluation: "正面" },
   { id: "223", dilemma: "烈焰突袭", option: "真的是恶龙吗？", result: "经验奖励+150%", map: "焦土世界", evaluation: "正面" },
+  { id: "223", dilemma: "烈焰突袭", option: "真的是恶龙吗？", result: "特指：心思细腻", map: "焦土世界", evaluation: "正面" },
   { id: "224", dilemma: "烈焰突袭", option: "是一条恶龙！", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "225", dilemma: "烈焰突袭", option: "看我！（火焰护盾）", result: "士气高涨, 经验奖励+350%", map: "焦土世界", evaluation: "正面" },
   { id: "226", dilemma: "情况危急", option: "舀水", result: "展示品品质-1", map: "双点海", evaluation: "负面" },
@@ -292,8 +294,12 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "273", dilemma: "燃烧的怒火", option: "堵住东边的路（拯救仙灵谷）", result: "恶龙之怒：祈愿村调查点已被摧毁", map: "焦土世界", evaluation: "中性" },
   { id: "274", dilemma: "说得比唱的好听", option: "去冒险吧", result: "士气低落", map: "焦土世界", evaluation: "负面" },
   { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
-  { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" }
+  { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "277", dilemma: "落难恶龙", option: "小心取箭", result: "特指：龙之智慧", map: "焦土世界", evaluation: "正面" },
+  { id: "278", dilemma: "落难恶龙", option: "小心取箭", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "279", dilemma: "落难恶龙", option: "小心取箭", result: "未知", map: "焦土世界", evaluation: "中性" },
 ];
+
 
 
 
