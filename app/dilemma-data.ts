@@ -295,10 +295,11 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "274", dilemma: "说得比唱的好听", option: "去冒险吧", result: "士气低落", map: "焦土世界", evaluation: "负面" },
   { id: "275", dilemma: "说得比唱的好听", option: "自己的任务，自己搞定", result: "特质：幸灾乐祸", map: "焦土世界", evaluation: "中性" },
   { id: "276", dilemma: "说得比唱的好听", option: "任务？算了吧（黑暗术士）", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "277", dilemma: "落难恶龙", option: "小心取箭", result: "特指：龙之智慧", map: "焦土世界", evaluation: "正面" },
-  { id: "278", dilemma: "落难恶龙", option: "小心取箭", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "279", dilemma: "落难恶龙", option: "小心取箭", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "277", dilemma: "落难恶龙", option: "小心取箭", result: "特质：龙之智慧", map: "焦土世界", evaluation: "正面" },
+  { id: "278", dilemma: "落难恶龙", option: "用力拔箭", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },
+  { id: "279", dilemma: "落难恶龙", option: "攻击！", result: "未知", map: "焦土世界", evaluation: "中性" },
 ];
+
 
 
 
