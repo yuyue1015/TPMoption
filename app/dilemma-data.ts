@@ -219,6 +219,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "201", dilemma: "宝藏时刻", option: "探测（龙之智慧）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "202", dilemma: "黑洞惊魂", option: "反向推进", result: "展示品品质-1", map: "已知宇宙", evaluation: "负面" },
   { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气高涨, 直升机受损", map: "已知宇宙", evaluation: "中性" },
+  { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气高涨, 探险行动时长：-7天", map: "已知宇宙", evaluation: "正面" },
   { id: "203", dilemma: "黑洞惊魂", option: "徒劳的抵抗", result: "士气低落, 探险行动时长：+7天", map: "已知宇宙", evaluation: "负面" },
   { id: "204", dilemma: "脚部宕机", option: "再撑一下", result: "士气高涨, 【伤病】冻脚, 经验奖励+10%", map: "已知宇宙", evaluation: "正面,伤病" },
   { id: "205", dilemma: "脚部宕机", option: "修补靴子", result: "直升机受损, 探险行动时长：+7天, 经验奖励+5%", map: "已知宇宙", evaluation: "负面,正面" },
@@ -299,6 +300,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "278", dilemma: "落难恶龙", option: "用力拔箭", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },
   { id: "279", dilemma: "落难恶龙", option: "攻击！", result: "未知", map: "焦土世界", evaluation: "中性" },
 ];
+
 
 
 
