@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "双点博物馆探险困境指南",
+  title: "双点博物馆探险困境助手",
   description: "双点博物馆探险困境选择与结果查询系统，生存指南及数据汇总。",
   applicationName: "Two Point Museum Expedition Guide",
   authors: [{ name: "悦小白游戏记" }],
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "探险困境指南",
+    title: "双点困境助手",
   },
   other: {
     'mobile-web-app-capable': 'yes',
@@ -43,6 +43,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
 
