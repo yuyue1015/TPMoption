@@ -1,5 +1,5 @@
 {
-  "name": "双点博物馆探险困境助手,
+  "name": "双点博物馆探险困境助手",
   "short_name": "双点困境助手",
   "start_url": "/",
   "display": "standalone",
@@ -20,4 +20,5 @@
     }
   ]
 }
+
 
