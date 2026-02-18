@@ -224,16 +224,16 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "204", dilemma: "脚部宕机", option: "再撑一下", result: "士气高涨, 【伤病】冻脚, 经验奖励+10%", map: "已知宇宙", evaluation: "正面,伤病" },
   { id: "205", dilemma: "脚部宕机", option: "修补靴子", result: "直升机受损, 探险行动时长：+7天, 经验奖励+5%", map: "已知宇宙", evaluation: "负面,正面" },
   { id: "206", dilemma: "脚部宕机", option: "快速修复（机械学）", result: "士气高涨", map: "已知宇宙", evaluation: "正面" },
-  { id: "207", dilemma: "王国收入", option: "交税", result: "金钱-5000, 随行物品（力量魔药）", map: "焦土世界", evaluation: "负面,正面" },
+  { id: "207", dilemma: "王国收入", option: "交税", result: "金钱-5000, 随行物品（力量魔药）", map: "焦土世界", evaluation: "正面" },
   { id: "208", dilemma: "王国收入", option: "逃税", result: "耻辱囚枷", map: "焦土世界", evaluation: "中性" },
-  { id: "209", dilemma: "王国收入", option: "可我就是国王啊？（王国之冠）", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "210", dilemma: "巨魔为谁收债", option: "抢钱", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "209", dilemma: "王国收入", option: "可我就是国王啊？（王国之冠）", result: "金钱+10000", map: "焦土世界", evaluation: "正面" },
+  { id: "210", dilemma: "巨魔为谁收债", option: "抢钱", result: "金钱+10000", map: "焦土世界", evaluation: "正面" },
   { id: "211", dilemma: "巨魔为谁收债", option: "失物我来领", result: "随行物品（敏捷魔药）", map: "焦土世界", evaluation: "正面" },
   { id: "212", dilemma: "女巫之夜", option: "不了，谢谢", result: "经验奖励+25% ", map: "焦土世界", evaluation: "正面" },
   { id: "213", dilemma: "女巫之夜", option: "喝几杯再走", result: "特质：聪慧", map: "焦土世界", evaluation: "正面" },
   { id: "213", dilemma: "女巫之夜", option: "喝几杯再走", result: "特质：文弱", map: "焦土世界", evaluation: "负面" },
   { id: "214", dilemma: "女巫之夜", option: "有人喜欢听鲁特宝琴吗？（鲁特宝琴）", result: "未知", map: "焦土世界", evaluation: "中性" },
-  { id: "215", dilemma: "美中不足", option: "美中不足", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "215", dilemma: "美中不足", option: "别盯着看了", result: "无事发生", map: "焦土世界", evaluation: "中性" },
   { id: "216", dilemma: "美中不足", option: "把石头圈补好", result: "特质：矮人庇佑", map: "焦土世界", evaluation: "正面" },
   { id: "217", dilemma: "美中不足", option: "跳支小舞（矮人庇佑）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "218", dilemma: "切断，突围", option: "带走龙爪碎片", result: "龙之力量,特质：破军杀龙", map: "焦土世界", evaluation: "正面" },
@@ -242,8 +242,9 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "221", dilemma: "无火不起烟", option: "绕远路", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "222", dilemma: "无火不起烟", option: "安全路线（荒野求生）", result: "经验奖励+5%", map: "焦土世界", evaluation: "正面" },
   { id: "223", dilemma: "烈焰突袭", option: "真的是恶龙吗？", result: "经验奖励+150%", map: "焦土世界", evaluation: "正面" },
-  { id: "223", dilemma: "烈焰突袭", option: "真的是恶龙吗？", result: "特指：心思细腻", map: "焦土世界", evaluation: "正面" },
-  { id: "224", dilemma: "烈焰突袭", option: "是一条恶龙！", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "223b", dilemma: "烈焰突袭", option: "真的是恶龙吗？", result: "特质：心思细腻", map: "焦土世界", evaluation: "正面" },
+  { id: "223c", dilemma: "烈焰突袭", option: "真的是恶龙吗？", result: "诅咒：野火", map: "焦土世界", evaluation: "负面" },  
+  { id: "224", dilemma: "烈焰突袭", option: "是一条恶龙！", result: "探险行动时长+4天，经验奖励+25%", map: "焦土世界", evaluation: "正面" },
   { id: "225", dilemma: "烈焰突袭", option: "看我！（火焰护盾）", result: "士气高涨, 经验奖励+350%", map: "焦土世界", evaluation: "正面" },
   { id: "226", dilemma: "情况危急", option: "舀水", result: "展示品品质-1", map: "双点海", evaluation: "负面" },
   { id: "227", dilemma: "情况危急", option: "堵住漏洞（荒野求生）", result: "探险行动时长：-3天, 士气高涨", map: "双点海", evaluation: "正面" },
@@ -265,7 +266,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "243", dilemma: "美石相伴", option: "不了，谢谢", result: "无事发生", map: "远方群岛", evaluation: "中性" },
   { id: "244", dilemma: "", option: "清理栖息地", result: "未知", map: "远方群岛", evaluation: "中性" },
   { id: "263", dilemma: "杂乱小窝", option: "带走动物", result: "展示品的品质:+1", map: "远方群岛", evaluation: "正面" },
-  { id: "245", dilemma: "巢摇过市", option: "带走书", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },
+  { id: "245", dilemma: "巢摇过市", option: "带走书", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },  
+  { id: "245b", dilemma: "巢摇过市", option: "带走书", result: "特质：龙语者", map: "焦土世界", evaluation: "正面" },
   { id: "246", dilemma: "巢摇过市", option: "带走黄金", result: "金钱+15000", map: "焦土世界", evaluation: "正面" },
   { id: "247", dilemma: "巢摇过市", option: "带走魔药", result: "随行物品（无敌药水）", map: "焦土世界", evaluation: "正面" },
   { id: "248", dilemma: "上古战场", option: "帮忙", result: "特质：打工牛马", map: "焦土世界", evaluation: "正面" },
@@ -277,7 +279,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "254", dilemma: "危险峭壁", option: "小憩片刻", result: "特质：满脑子咖啡豆,经验奖励+50% ", map: "远方群岛", evaluation: "正面" },
   { id: "255", dilemma: "危险峭壁", option: "找个帮手（-10000）", result: "金钱-10000,士气高涨", map: "远方群岛", evaluation: "负面,正面" },
   { id: "256", dilemma: "奇遇", option: "帮忙", result: "【伤病】碎脸, 金钱+1500, 随行物品（富贵有余魔药）", map: "焦土世界", evaluation: "伤病" },
-  { id: "257", dilemma: "奇遇", option: "不帮", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "257", dilemma: "奇遇", option: "不帮", result: "无事发生", map: "焦土世界", evaluation: "中性" },
   { id: "258", dilemma: "奇遇", option: "御马之术（斯皮粉多学者）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "259", dilemma: "危机之地", option: "继续前进", result: "探险行动时长：-3天", map: "远方群岛", evaluation: "正面" },
   { id: "260", dilemma: "危机之地", option: "留下除草", result: "探险行动时长:+7天,生物多样性等级降低", map: "远方群岛", evaluation: "负面" },
@@ -299,11 +301,6 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "277", dilemma: "落难恶龙", option: "小心取箭", result: "特质：龙之智慧", map: "焦土世界", evaluation: "正面" },
   { id: "278", dilemma: "落难恶龙", option: "用力拔箭", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },
   { id: "279", dilemma: "落难恶龙", option: "攻击！", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "292", dilemma: "放鸟过来", option: "干预环境", result: "生物多样性等级+25%，疾病：动物磁力症", map: "焦土世界", evaluation: "中性" },
+  { id: "293", dilemma: "放鸟过来", option: "不干预环境", result: "未知", map: "焦土世界", evaluation: "中性" },
 ];
-
-
-
-
-
-
-
