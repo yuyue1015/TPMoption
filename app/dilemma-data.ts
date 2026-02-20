@@ -276,6 +276,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "251", dilemma: "迷失矿洞", option: "坐上矿车", result: "士气高涨, 探险行动时长：+3天", map: "焦土世界", evaluation: "中性" },
   { id: "252", dilemma: "迷失矿洞", option: "挖矿装备？（矮人庇佑）", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "253", dilemma: "危险峭壁", option: "迎难而上", result: "特质：打工牛马", map: "远方群岛", evaluation: "正面" },
+  { id: "253", dilemma: "危险峭壁", option: "迎难而上", result: "特质：懒鬼", map: "远方群岛", evaluation: "负面" },
   { id: "254", dilemma: "危险峭壁", option: "小憩片刻", result: "特质：满脑子咖啡豆,经验奖励+50% ", map: "远方群岛", evaluation: "正面" },
   { id: "255", dilemma: "危险峭壁", option: "找个帮手（-10000）", result: "金钱-10000,士气高涨", map: "远方群岛", evaluation: "负面,正面" },
   { id: "256", dilemma: "奇遇", option: "帮忙", result: "【伤病】碎脸, 金钱+1500, 随行物品（富贵有余魔药）", map: "焦土世界", evaluation: "伤病" },
@@ -302,5 +303,6 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "278", dilemma: "落难恶龙", option: "用力拔箭", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },
   { id: "279", dilemma: "落难恶龙", option: "攻击！", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "292", dilemma: "放鸟过来", option: "干预环境", result: "生物多样性等级+25%，疾病：动物磁力症", map: "焦土世界", evaluation: "中性" },
-  { id: "293", dilemma: "放鸟过来", option: "不干预环境", result: "未知", map: "焦土世界", evaluation: "中性" },
+  { id: "293", dilemma: "放鸟过来", option: "不干预环境", result: "探险行动时长：+3天", map: "焦土世界", evaluation: "负面" },
 ];
+
