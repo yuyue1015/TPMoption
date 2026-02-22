@@ -305,6 +305,12 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "279", dilemma: "落难恶龙", option: "攻击！", result: "未知", map: "焦土世界", evaluation: "中性" },
   { id: "292", dilemma: "放鸟过来", option: "干预环境", result: "生物多样性等级+25%，疾病：动物磁力症", map: "焦土世界", evaluation: "中性" },
   { id: "293", dilemma: "放鸟过来", option: "不干预环境", result: "探险行动时长：+3天", map: "焦土世界", evaluation: "负面" },
+  { id: "294", dilemma: "脚底破坏者", option: "想穿就穿吧", result: "未知", map: "远方群岛", evaluation: "中性" },
+  { id: "295", dilemma: "脚底破坏者", option: "强制要求穿靴子", result: "士气低落", map: "远方群岛", evaluation: "负面" },
+  { id: "296", dilemma: "脚底破坏者", option: "改装靴（机械学）", result: "未知", map: "远方群岛", evaluation: "中性" },
+  { id: "297", dilemma: "深入洞穴", option: "探个痛快！", result: "探险行动时长：+7天，金钱+5000士气高涨", map: "远方群岛", evaluation: "正面" },
+  { id: "298", dilemma: "深入洞穴", option: "现在不行", result: "未知", map: "远方群岛", evaluation: "中性" }
 ];
+
 
 
