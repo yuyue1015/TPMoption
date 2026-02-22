@@ -48,12 +48,17 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "38", dilemma: "急火攻心", option: "助其清醒", result: "探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
   { id: "39", dilemma: "急火攻心", option: "静观其变", result: "士气高涨, 探险行动时长：+5天", map: "白骨带", evaluation: "中性" },
   { id: "40", dilemma: "无食生非", option: "来点干酪片!", result: "士气高涨, 展示品品质-1", map: "白骨带", evaluation: "中性" },
-  { id: "40b", dilemma: "无食生非", option: "来点干酪片!", result: "士气高涨, 探险行动时长：+1天", map: "白骨带", evaluation: "中性" },
+  { id: "40b", dilemma: "无食生非", option: "来点干酪片!", result: "士气高涨, 探险行动时长：+1天", map: "白骨带", evaluation: "正面" },
+  { id: "40c", dilemma: "无食生非", option: "来点干酪片!", result: "无事发生", map: "白骨带", evaluation: "中性" },
   { id: "41", dilemma: "无食生非", option: "克服饥饿", result: "展示品特质：快速损坏", map: "白骨带", evaluation: "负面" },
+  { id: "41c", dilemma: "无食生非", option: "克服饥饿", result: "士气低落, 展示品品质-1", map: "白骨带", evaluation: "负面" },
+  { id: "41b", dilemma: "无食生非", option: "克服饥饿", result: "特质：贪吃", map: "白骨带", evaluation: "负面" },
   { id: "42", dilemma: "金光闪闪", option: "没有时间", result: "士气低落", map: "双点海", evaluation: "负面" },
   { id: "43", dilemma: "金光闪闪", option: "过去看看", result: "金钱+10000, 探险行动时长：+1天, 探险行动时长：+3天", map: "双点海", evaluation: "中性" },
   { id: "44", dilemma: "鲨鱼开饭", option: "用海藻包扎伤口(荒野求生)", result: "士气高涨, 经验奖励+15%", map: "双点海", evaluation: "正面" },
   { id: "45", dilemma: "鲨鱼开饭", option: "别放在心上", result: "【伤病】痛痛腿", map: "双点海", evaluation: "伤病" },
+  { id: "45b", dilemma: "鲨鱼开饭", option: "别放在心上", result: "失踪", map: "双点海", evaluation: "失踪" },
+  { id: "45c", dilemma: "鲨鱼开饭", option: "别放在心上", result: "展示品品质：-1", map: "双点海", evaluation: "负面" },
   { id: "46", dilemma: "鲨鱼开饭", option: "送TA回去", result: "探险行动时长：+4天, 探险行动时长：+2天", map: "双点海", evaluation: "负面" },
   { id: "47", dilemma: "巨齿危机", option: "全速前进", result: "探险行动时长：-7天", map: "双点海", evaluation: "正面" },
   { id: "48", dilemma: "巨齿危机", option: "灵活闪避", result: "展示品品质-1, 获得特质", map: "双点海", evaluation: "负面,中性" },
@@ -312,6 +317,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "297b", dilemma: "深入洞穴", option: "探个痛快！", result: "探险行动时长：+4天，伤病：痛痛退", map: "远方群岛", evaluation: "伤病" },
   { id: "298", dilemma: "深入洞穴", option: "现在不行", result: "未知", map: "远方群岛", evaluation: "中性" }
 ];
+
 
 
 
