@@ -48,6 +48,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "38", dilemma: "急火攻心", option: "助其清醒", result: "探险行动时长：+5天", map: "白骨带", evaluation: "负面" },
   { id: "39", dilemma: "急火攻心", option: "静观其变", result: "士气高涨, 探险行动时长：+5天", map: "白骨带", evaluation: "中性" },
   { id: "40", dilemma: "无食生非", option: "来点干酪片!", result: "士气高涨, 展示品品质-1", map: "白骨带", evaluation: "中性" },
+  { id: "40b", dilemma: "无食生非", option: "来点干酪片!", result: "士气高涨, 探险行动时长：+1天", map: "白骨带", evaluation: "中性" },
   { id: "41", dilemma: "无食生非", option: "克服饥饿", result: "展示品特质：快速损坏", map: "白骨带", evaluation: "负面" },
   { id: "42", dilemma: "金光闪闪", option: "没有时间", result: "士气低落", map: "双点海", evaluation: "负面" },
   { id: "43", dilemma: "金光闪闪", option: "过去看看", result: "金钱+10000, 探险行动时长：+1天, 探险行动时长：+3天", map: "双点海", evaluation: "中性" },
@@ -305,4 +306,5 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "292", dilemma: "放鸟过来", option: "干预环境", result: "生物多样性等级+25%，疾病：动物磁力症", map: "焦土世界", evaluation: "中性" },
   { id: "293", dilemma: "放鸟过来", option: "不干预环境", result: "探险行动时长：+3天", map: "焦土世界", evaluation: "负面" },
 ];
+
 
