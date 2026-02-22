@@ -61,8 +61,11 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "45c", dilemma: "鲨鱼开饭", option: "别放在心上", result: "展示品品质：-1", map: "双点海", evaluation: "负面" },
   { id: "46", dilemma: "鲨鱼开饭", option: "送TA回去", result: "探险行动时长：+4天, 探险行动时长：+2天", map: "双点海", evaluation: "负面" },
   { id: "47", dilemma: "巨齿危机", option: "全速前进", result: "探险行动时长：-7天", map: "双点海", evaluation: "正面" },
-  { id: "48", dilemma: "巨齿危机", option: "灵活闪避", result: "展示品品质-1, 获得特质", map: "双点海", evaluation: "负面,中性" },
+    { id: "47b", dilemma: "巨齿危机", option: "全速前进", result: "探险行动时长：+7天", map: "双点海", evaluation: "负面" },
+  { id: "48", dilemma: "巨齿危机", option: "灵活闪避", result: "展示品品质-1, 拥抱大海(避免晕船)", map: "双点海", evaluation: "负面,中性" },
+    { id: "48b", dilemma: "巨齿危机", option: "灵活闪避", result: "展示品品质-1, 经验奖励+5%XP", map: "双点海", evaluation: "负面,中性" },
   { id: "49", dilemma: "巨齿危机", option: "藏起来(荒野求生)", result: "特质：拥抱大海(避免晕船)", map: "双点海", evaluation: "正面" },
+    { id: "49b", dilemma: "巨齿危机", option: "藏起来(荒野求生)", result: "士气高涨", map: "双点海", evaluation: "正面" },
   { id: "50", dilemma: "印了个钱", option: "开个价吧", result: "金钱-2000, 展示品：印钱机", map: "双点海", evaluation: "负面,正面" },
   { id: "51", dilemma: "印了个钱", option: "没兴趣", result: "无事发生", map: "双点海", evaluation: "中性" },
   { id: "52", dilemma: "海藻之缚", option: "救回展示品", result: "展示品品质+1, 士气低落", map: "双点海", evaluation: "中性" },
@@ -317,6 +320,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "297b", dilemma: "深入洞穴", option: "探个痛快！", result: "探险行动时长：+4天，伤病：痛痛退", map: "远方群岛", evaluation: "伤病" },
   { id: "298", dilemma: "深入洞穴", option: "现在不行", result: "未知", map: "远方群岛", evaluation: "中性" }
 ];
+
 
 
 
