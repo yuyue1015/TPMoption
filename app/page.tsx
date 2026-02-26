@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   Search,
   AlertTriangle,
@@ -64,7 +64,7 @@ export default function DilemmaSearchApp() {
   const [totalPraise, setTotalPraise] = useState(0);
   const [isPraisePaused, setIsPraisePaused] = useState(false);
   const [achievementModal, setAchievementModal] = useState<number | null>(null);
-  const [triggeredAchievements, setTriggeredAchievements] = useState<Record<number, boolean>>({});
+  const triggeredAchievementsRef = useRef<Record<number, boolean>>({});
 
   useEffect(() => {
     setHasMounted(true);
@@ -98,7 +98,8 @@ export default function DilemmaSearchApp() {
 
   const hasRevealedFirstOption = revealedCount > 0;
   const allOptionsRevealed = totalOptions > 0 && revealedCount === totalOptions;
-  const isPraiseRunning = mode === 'game' && gameStarted && !isPraisePaused && !allOptionsRevealed;
+  const isPraiseRunning =
+    mode === 'game' && gameStarted && !isPraisePaused && !allOptionsRevealed && !feedback && achievementModal === null;
 
   useEffect(() => {
     if (!isPraiseRunning) return;
@@ -113,15 +114,21 @@ export default function DilemmaSearchApp() {
   }, [isPraiseRunning]);
 
   useEffect(() => {
+    if (achievementModal !== null) return;
+
     const nextThreshold = ACHIEVEMENT_THRESHOLDS.find(
-      (threshold) => totalPraise > threshold && !triggeredAchievements[threshold]
+      (threshold) => totalPraise > threshold && !triggeredAchievementsRef.current[threshold]
     );
 
     if (!nextThreshold) return;
 
-    setTriggeredAchievements((prev) => ({ ...prev, [nextThreshold]: true }));
+    triggeredAchievementsRef.current[nextThreshold] = true;
     setIsPraisePaused(true);
     setAchievementModal(nextThreshold);
+  }, [totalPraise, achievementModal]);
+
+  useEffect(() => {
+    if (achievementModal === null) return;
 
     const timer = window.setTimeout(() => {
       setAchievementModal(null);
@@ -129,7 +136,7 @@ export default function DilemmaSearchApp() {
     }, 2000);
 
     return () => window.clearTimeout(timer);
-  }, [totalPraise, triggeredAchievements]);
+  }, [achievementModal]);
 
   const chooseRandomDilemma = () => {
     if (!groupedAllDilemmas.length) return;
