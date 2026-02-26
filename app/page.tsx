@@ -37,6 +37,7 @@ interface GuessState {
 type FeedbackState = {
   type: 'correct' | 'wrong';
   earned?: number;
+  comboCount?: number;
 } | null;
 
 const PRAISE_MIN = 10;
@@ -52,6 +53,22 @@ function clampPraise(value: number) {
   return Number(Math.max(value, 0).toFixed(2));
 }
 
+function getSoftCapMultiplier(totalPraise: number) {
+  if (totalPraise > 1500) return 0.5;
+  if (totalPraise > 800) return 0.6;
+  if (totalPraise > 300) return 0.75;
+  if (totalPraise > 100) return 0.9;
+  return 1;
+}
+
+function getComboMultiplier(comboCount: number) {
+  if (comboCount >= 12) return 1.5;
+  if (comboCount >= 8) return 1.3;
+  if (comboCount >= 5) return 1.2;
+  if (comboCount >= 3) return 1.1;
+  return 1;
+}
+
 export default function DilemmaSearchApp() {
   const [query, setQuery] = useState('');
   const [hasMounted, setHasMounted] = useState(false);
@@ -64,6 +81,7 @@ export default function DilemmaSearchApp() {
   const [totalPraise, setTotalPraise] = useState(0);
   const [isPraisePaused, setIsPraisePaused] = useState(false);
   const [achievementModal, setAchievementModal] = useState<number | null>(null);
+  const [comboCount, setComboCount] = useState(0);
   const triggeredAchievementsRef = useRef<Record<number, boolean>>({});
 
   useEffect(() => {
@@ -163,7 +181,6 @@ export default function DilemmaSearchApp() {
     if (guessMap[optionKey]?.revealed) return;
 
     const isCorrect = evaluations.some((evaluation) => getGuessType(evaluation) === guess);
-    const earnedPraise = currentPraise;
 
     setGuessMap((prev) => ({
       ...prev,
@@ -175,10 +192,17 @@ export default function DilemmaSearchApp() {
     }));
 
     if (isCorrect) {
+      const nextComboCount = comboCount + 1;
+      const softCapMultiplier = getSoftCapMultiplier(totalPraise);
+      const comboMultiplier = getComboMultiplier(nextComboCount);
+      const earnedPraise = Number((currentPraise * softCapMultiplier * comboMultiplier).toFixed(2));
+
+      setComboCount(nextComboCount);
       setTotalPraise((prev) => Number((prev + earnedPraise).toFixed(2)));
-      setFeedback({ type: 'correct', earned: earnedPraise });
+      setFeedback({ type: 'correct', earned: earnedPraise, comboCount: nextComboCount });
       setCurrentPraise(randomPraiseValue());
     } else {
+      setComboCount(0);
       setFeedback({ type: 'wrong' });
     }
   };
@@ -242,6 +266,7 @@ export default function DilemmaSearchApp() {
           <div className="mb-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 flex flex-col gap-1">
             <p>当前赞誉：K {currentPraise.toFixed(2)}</p>
             <p>累计总赞誉：K {totalPraise.toFixed(2)}</p>
+            <p>当前连击：{comboCount}</p>
           </div>
           <button
             type="button"
@@ -293,6 +318,9 @@ export default function DilemmaSearchApp() {
               <>
                 <p className="text-sm font-bold text-emerald-600">恭喜你答对了！</p>
                 <p className="text-sm font-bold text-slate-700 mt-2">K {feedback.earned?.toFixed(2)}</p>
+                {(feedback.comboCount ?? 0) >= 3 && (
+                  <p className="text-xs font-bold text-orange-600 mt-1">连击答对！COMBO x{feedback.comboCount}</p>
+                )}
               </>
             ) : (
               <p className="text-sm font-bold text-red-600">答错了！</p>
@@ -439,13 +467,13 @@ function GameDilemmaCard({
                 return (
                   <>
                     {opt.records.map((record) => (
-                      <div key={record.id} className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                      <div key={record.id} className={`p-3 bg-slate-50 rounded-xl border border-slate-100 ${state?.revealed ? '' : 'blur-[3px]'}`}>
                         <div className="flex items-start gap-2">
                           {state?.revealed ? <ResultIcon type={record.evaluation} /> : <Zap className="text-slate-300 flex-shrink-0 mt-0.5" size={16} />}
                           <div className="flex-1">
                             <p
                               className={`text-sm font-bold leading-relaxed ${
-                                state?.revealed ? getResultColor(record.evaluation) : 'text-slate-500 blur-[3px] select-none'
+                                state?.revealed ? getResultColor(record.evaluation) : 'text-slate-500 select-none'
                               } ${state?.crossed ? 'line-through decoration-2 decoration-red-400' : ''}`}
                             >
                               {record.result || '暂无记录'}
