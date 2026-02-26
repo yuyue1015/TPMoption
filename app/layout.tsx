@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "双点博物馆探险困境助手",
@@ -32,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN">
-      <body className={`${inter.className} min-h-screen bg-slate-50 text-slate-900 antialiased`}>
+      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         {/* 页面主容器：限制最大宽度并居中，增加侧边距防止移动端贴边 */}
         <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {children}
