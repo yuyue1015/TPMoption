@@ -509,6 +509,7 @@ function getGuessType(evaluation: string): GuessType {
     evaluation?.includes('负面') ||
     evaluation?.includes('失踪') ||
     evaluation?.includes('疾病') ||
+    evaluation?.includes('诅咒') ||
     evaluation?.includes('伤病')
   ) {
     return 'negative';
