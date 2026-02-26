@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   Search,
   AlertTriangle,
@@ -17,8 +17,6 @@ const FORM_URL = 'https://my.feishu.cn/share/base/form/shrcnL8QkRKAuxL5J6FuT2nVO
 
 type Mode = 'search' | 'game';
 type GuessType = 'negative' | 'neutral' | 'positive';
-type RecordId = DilemmaRecord['id'];
-
 interface GroupedDilemma {
   name: string;
   map: string;
@@ -36,23 +34,65 @@ interface GuessState {
   guessed?: GuessType;
 }
 
+type FeedbackState = {
+  type: 'correct' | 'wrong';
+  earned?: number;
+  comboCount?: number;
+} | null;
+
+const PRAISE_MIN = 10;
+const PRAISE_MAX = 15;
+const PRAISE_DECREMENT_PER_SECOND = 2;
+const ACHIEVEMENT_THRESHOLDS = [100, 500, 1000] as const;
+
+function randomPraiseValue() {
+  return Number((Math.random() * (PRAISE_MAX - PRAISE_MIN) + PRAISE_MIN).toFixed(2));
+}
+
+function clampPraise(value: number) {
+  return Number(Math.max(value, 0).toFixed(2));
+}
+
+function getSoftCapMultiplier(totalPraise: number) {
+  if (totalPraise > 1500) return 0.5;
+  if (totalPraise > 800) return 0.6;
+  if (totalPraise > 300) return 0.75;
+  if (totalPraise > 100) return 0.9;
+  return 1;
+}
+
+function getComboMultiplier(comboCount: number) {
+  if (comboCount >= 12) return 1.5;
+  if (comboCount >= 8) return 1.3;
+  if (comboCount >= 5) return 1.2;
+  if (comboCount >= 3) return 1.1;
+  return 1;
+}
+
 export default function DilemmaSearchApp() {
   const [query, setQuery] = useState('');
   const [hasMounted, setHasMounted] = useState(false);
   const [mode, setMode] = useState<Mode>('search');
   const [randomDilemma, setRandomDilemma] = useState<GroupedDilemma | null>(null);
-  const [guessMap, setGuessMap] = useState<Record<RecordId, GuessState>>({});
-  const [showCorrectModal, setShowCorrectModal] = useState(false);
+  const [guessMap, setGuessMap] = useState<Record<string, GuessState>>({});
+  const [feedback, setFeedback] = useState<FeedbackState>(null);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [currentPraise, setCurrentPraise] = useState(0);
+  const [totalPraise, setTotalPraise] = useState(0);
+  const [isPraisePaused, setIsPraisePaused] = useState(false);
+  const [achievementModal, setAchievementModal] = useState<number | null>(null);
+  const [comboCount, setComboCount] = useState(0);
+  const triggeredAchievementsRef = useRef<Record<number, boolean>>({});
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!showCorrectModal) return;
-    const timer = window.setTimeout(() => setShowCorrectModal(false), 1000);
+    if (!feedback) return;
+    const timer = window.setTimeout(() => setFeedback(null), 1000);
     return () => window.clearTimeout(timer);
-  }, [showCorrectModal]);
+  }, [feedback]);
 
   const groupedAllDilemmas = useMemo(() => groupDilemmas(DILEMMA_DATA), []);
 
@@ -67,20 +107,84 @@ export default function DilemmaSearchApp() {
     return groupDilemmas(filteredRows);
   }, [query, hasMounted]);
 
+  const revealedCount = useMemo(
+    () => Object.values(guessMap).filter((state) => state.revealed).length,
+    [guessMap]
+  );
+
+  const totalOptions = useMemo(() => randomDilemma?.options.length ?? 0, [randomDilemma]);
+
+  const hasRevealedFirstOption = revealedCount > 0;
+  const allOptionsRevealed = totalOptions > 0 && revealedCount === totalOptions;
+  const isPraiseRunning =
+    mode === 'game' && gameStarted && !isPraisePaused && !allOptionsRevealed && !feedback && achievementModal === null;
+
+  useEffect(() => {
+    if (!isPraiseRunning) return;
+
+    const tickMs = 10;
+    const decrement = PRAISE_DECREMENT_PER_SECOND * (tickMs / 1000);
+    const timer = window.setInterval(() => {
+      setCurrentPraise((prev) => clampPraise(prev - decrement));
+    }, tickMs);
+
+    return () => window.clearInterval(timer);
+  }, [isPraiseRunning]);
+
+  useEffect(() => {
+    if (achievementModal !== null) return;
+
+    const nextThreshold = ACHIEVEMENT_THRESHOLDS.find(
+      (threshold) => totalPraise > threshold && !triggeredAchievementsRef.current[threshold]
+    );
+
+    if (!nextThreshold) return;
+
+    triggeredAchievementsRef.current[nextThreshold] = true;
+    setIsPraisePaused(true);
+    setAchievementModal(nextThreshold);
+  }, [totalPraise, achievementModal]);
+
+  useEffect(() => {
+    if (achievementModal === null) return;
+
+    const timer = window.setTimeout(() => {
+      setAchievementModal(null);
+      setIsPraisePaused(false);
+    }, 2000);
+
+    return () => window.clearTimeout(timer);
+  }, [achievementModal]);
+
   const chooseRandomDilemma = () => {
     if (!groupedAllDilemmas.length) return;
     const randomIndex = Math.floor(Math.random() * groupedAllDilemmas.length);
     setRandomDilemma(groupedAllDilemmas[randomIndex]);
     setGuessMap({});
-    setShowCorrectModal(false);
+    setFeedback(null);
+    setCurrentPraise(randomPraiseValue());
+    setGameStarted(true);
+    setIsPraisePaused(false);
   };
 
-  const handleGuess = (recordId: RecordId, evaluation: string, guess: GuessType) => {
-    const isCorrect = getGuessType(evaluation) === guess;
+  const handleNextQuestion = () => {
+    if (!gameStarted) {
+      chooseRandomDilemma();
+      return;
+    }
+
+    if (!hasRevealedFirstOption) return;
+    chooseRandomDilemma();
+  };
+
+  const handleGuess = (optionKey: string, evaluations: string[], guess: GuessType) => {
+    if (guessMap[optionKey]?.revealed) return;
+
+    const isCorrect = evaluations.some((evaluation) => getGuessType(evaluation) === guess);
 
     setGuessMap((prev) => ({
       ...prev,
-      [recordId]: {
+      [optionKey]: {
         revealed: true,
         crossed: !isCorrect,
         guessed: guess
@@ -88,7 +192,18 @@ export default function DilemmaSearchApp() {
     }));
 
     if (isCorrect) {
-      setShowCorrectModal(true);
+      const nextComboCount = comboCount + 1;
+      const softCapMultiplier = getSoftCapMultiplier(totalPraise);
+      const comboMultiplier = getComboMultiplier(nextComboCount);
+      const earnedPraise = Number((currentPraise * softCapMultiplier * comboMultiplier).toFixed(2));
+
+      setComboCount(nextComboCount);
+      setTotalPraise((prev) => Number((prev + earnedPraise).toFixed(2)));
+      setFeedback({ type: 'correct', earned: earnedPraise, comboCount: nextComboCount });
+      setCurrentPraise(randomPraiseValue());
+    } else {
+      setComboCount(0);
+      setFeedback({ type: 'wrong' });
     }
   };
 
@@ -148,12 +263,22 @@ export default function DilemmaSearchApp() {
 
       {mode === 'game' && (
         <div className="max-w-2xl mx-auto w-[92%] mb-6">
+          <div className="mb-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 flex flex-col gap-1">
+            <p>当前赞誉：K {currentPraise.toFixed(2)}</p>
+            <p>累计总赞誉：K {totalPraise.toFixed(2)}</p>
+            <p>当前连击：{comboCount}</p>
+          </div>
           <button
             type="button"
-            onClick={chooseRandomDilemma}
-            className="w-full py-2.5 rounded-xl bg-orange-500 text-white font-bold text-sm shadow-sm hover:bg-orange-600 transition-colors"
+            onClick={handleNextQuestion}
+            disabled={gameStarted && !hasRevealedFirstOption}
+            className={`w-full py-2.5 rounded-xl text-white font-bold text-sm shadow-sm transition-colors ${
+              gameStarted && !hasRevealedFirstOption
+                ? 'bg-slate-400 cursor-not-allowed'
+                : 'bg-orange-500 hover:bg-orange-600'
+            }`}
           >
-            随机困境选择
+            {gameStarted ? '开始下一题' : '开始游戏'}
           </button>
         </div>
       )}
@@ -181,15 +306,33 @@ export default function DilemmaSearchApp() {
         ) : (
           <div className="flex flex-col items-center text-slate-300 mt-6 mb-6">
             <Zap className="w-12 h-12 mb-2 opacity-10" />
-            <p className="text-sm font-medium">点击“随机困境选择”开始挑战</p>
+            <p className="text-sm font-medium">点击“开始游戏”开始挑战</p>
           </div>
         )}
       </div>
 
-      {showCorrectModal && (
+      {feedback && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4">
           <div className="bg-white rounded-xl px-5 py-4 shadow-xl text-center">
-            <p className="text-sm font-bold text-emerald-600">你答对了！</p>
+            {feedback.type === 'correct' ? (
+              <>
+                <p className="text-sm font-bold text-emerald-600">恭喜你答对了！</p>
+                <p className="text-sm font-bold text-slate-700 mt-2">K {feedback.earned?.toFixed(2)}</p>
+                {(feedback.comboCount ?? 0) >= 3 && (
+                  <p className="text-xs font-bold text-orange-600 mt-1">连击答对！COMBO x{feedback.comboCount}</p>
+                )}
+              </>
+            ) : (
+              <p className="text-sm font-bold text-red-600">答错了！</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {achievementModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4">
+          <div className="bg-white rounded-xl px-6 py-5 shadow-xl text-center">
+            <p className="text-base font-bold text-orange-600">你太棒了！赞誉已经超过{achievementModal}！</p>
           </div>
         </div>
       )}
@@ -287,8 +430,8 @@ function GameDilemmaCard({
   onGuess
 }: {
   data: GroupedDilemma;
-  guessMap: Record<RecordId, GuessState>;
-  onGuess: (recordId: RecordId, evaluation: string, guess: GuessType) => void;
+  guessMap: Record<string, GuessState>;
+  onGuess: (optionKey: string, evaluations: string[], guess: GuessType) => void;
 }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all">
@@ -316,30 +459,37 @@ function GameDilemmaCard({
             </div>
 
             <div className="ml-7 space-y-2">
-              {opt.records.map((record) => {
-                const state = guessMap[record.id];
+              {(() => {
+                const optionKey = `${idx}-${opt.option}`;
+                const state = guessMap[optionKey];
+                const optionEvaluations = opt.records.map((record) => record.evaluation);
+
                 return (
-                  <div key={record.id} className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="flex items-start gap-2">
-                      {state?.revealed ? <ResultIcon type={record.evaluation} /> : <Zap className="text-slate-300 flex-shrink-0 mt-0.5" size={16} />}
-                      <div className="flex-1">
-                        <p
-                          className={`text-sm font-bold leading-relaxed ${
-                            state?.revealed ? getResultColor(record.evaluation) : 'text-slate-500 blur-[3px] select-none'
-                          } ${state?.crossed ? 'line-through decoration-2 decoration-red-400' : ''}`}
-                        >
-                          {record.result || '暂无记录'}
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          <GuessButton onClick={() => onGuess(record.id, record.evaluation, 'negative')} label="负面" disabled={state?.revealed} />
-                          <GuessButton onClick={() => onGuess(record.id, record.evaluation, 'neutral')} label="中性" disabled={state?.revealed} />
-                          <GuessButton onClick={() => onGuess(record.id, record.evaluation, 'positive')} label="正面" disabled={state?.revealed} />
+                  <>
+                    {opt.records.map((record) => (
+                      <div key={record.id} className={`p-3 bg-slate-50 rounded-xl border border-slate-100 ${state?.revealed ? '' : 'blur-[3px]'}`}>
+                        <div className="flex items-start gap-2">
+                          {state?.revealed ? <ResultIcon type={record.evaluation} /> : <Zap className="text-slate-300 flex-shrink-0 mt-0.5" size={16} />}
+                          <div className="flex-1">
+                            <p
+                              className={`text-sm font-bold leading-relaxed ${
+                                state?.revealed ? getResultColor(record.evaluation) : 'text-slate-500 select-none'
+                              } ${state?.crossed ? 'line-through decoration-2 decoration-red-400' : ''}`}
+                            >
+                              {record.result || '暂无记录'}
+                            </p>
+                          </div>
                         </div>
                       </div>
+                    ))}
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <GuessButton onClick={() => onGuess(optionKey, optionEvaluations, 'negative')} label="负面" disabled={state?.revealed} />
+                      <GuessButton onClick={() => onGuess(optionKey, optionEvaluations, 'neutral')} label="中性" disabled={state?.revealed} />
+                      <GuessButton onClick={() => onGuess(optionKey, optionEvaluations, 'positive')} label="正面" disabled={state?.revealed} />
                     </div>
-                  </div>
+                  </>
                 );
-              })}
+              })()}
             </div>
           </div>
         ))}
