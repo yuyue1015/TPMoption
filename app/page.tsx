@@ -40,7 +40,7 @@ export default function DilemmaSearchApp() {
   const [hasMounted, setHasMounted] = useState(false);
   const [mode, setMode] = useState<Mode>('search');
   const [randomDilemma, setRandomDilemma] = useState<GroupedDilemma | null>(null);
-  const [guessMap, setGuessMap] = useState<Record<string, GuessState>>({});
+  const [guessMap, setGuessMap] = useState<Record<number, GuessState>>({});
   const [showCorrectModal, setShowCorrectModal] = useState(false);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function DilemmaSearchApp() {
     setShowCorrectModal(false);
   };
 
-  const handleGuess = (recordId: string, evaluation: string, guess: GuessType) => {
+  const handleGuess = (recordId: number, evaluation: string, guess: GuessType) => {
     const isCorrect = getGuessType(evaluation) === guess;
 
     setGuessMap((prev) => ({
@@ -286,8 +286,8 @@ function GameDilemmaCard({
   onGuess
 }: {
   data: GroupedDilemma;
-  guessMap: Record<string, GuessState>;
-  onGuess: (recordId: string, evaluation: string, guess: GuessType) => void;
+  guessMap: Record<number, GuessState>;
+  onGuess: (recordId: number, evaluation: string, guess: GuessType) => void;
 }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all">
