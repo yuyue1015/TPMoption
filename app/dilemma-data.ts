@@ -108,7 +108,8 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "89", dilemma: "奶酪，我来了", option: "伸出援手", result: "士气高涨, 【伤病】满脚奶酪", map: "已知宇宙", evaluation: "正面,伤病" },
   { id: "90", dilemma: "奶酪，我来了", option: "自求多福吧", result: "士气低落, 【伤病】满脚奶酪", map: "已知宇宙", evaluation: "负面,伤病" },
   { id: "91", dilemma: "触手突袭", option: "加速逃脱", result: "无事发生", map: "双点海", evaluation: "中性" },
-  { id: "92", dilemma: "触手突袭", option: "击退乌贼（随机）", result: "无事发生, 探险行动时长：+2天", map: "双点海", evaluation: "中性,负面" },
+  { id: "92", dilemma: "触手突袭", option: "击退乌贼", result: "无事发生", map: "双点海", evaluation: "中性" },
+  { id: "92b", dilemma: "触手突袭", option: "击退乌贼", result: "探险行动时长：+2天", map: "双点海", evaluation: "负面" },
   { id: "93", dilemma: "触手突袭", option: "唱船歌（概率无事发生）", result: "士气高涨", map: "双点海", evaluation: "正面" },
   { id: "94", dilemma: "光芒闪动", option: "跟着光走", result: "性能模块（强力固定）, 金钱-500", map: "已知宇宙", evaluation: "中性" },
   { id: "95", dilemma: "光芒闪动", option: "远离光芒", result: "展示品品质-1", map: "已知宇宙", evaluation: "负面" },
@@ -125,8 +126,10 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "105", dilemma: "烦人鬼", option: "吓跑它", result: "无事发生", map: "冥界", evaluation: "中性" },
   { id: "106", dilemma: "烦人鬼", option: "向鬼魂求助", result: "展示品品质+1, 探险行动时长：-1天", map: "冥界", evaluation: "正面" },
   { id: "107", dilemma: "烦人鬼", option: "跟它讲道理", result: "经验奖励+15%", map: "冥界", evaluation: "正面" },
-  { id: "108", dilemma: "凡事讲概率", option: "冒险穿越（随机一项）", result: "士气低落, 无事发生", map: "已知宇宙", evaluation: "负面,中性" },
-  { id: "109", dilemma: "凡事讲概率", option: "采取回避行动（随机一项）", result: "直升机受损, 【伤病】碎脸", map: "已知宇宙", evaluation: "负面,伤病" },
+  { id: "108", dilemma: "凡事讲概率", option: "冒险穿越", result: "士气低落", map: "已知宇宙", evaluation: "负面" },
+  { id: "108b", dilemma: "凡事讲概率", option: "冒险穿越", result: "无事发生", map: "已知宇宙", evaluation: "中性" }, 
+  { id: "109", dilemma: "凡事讲概率", option: "采取回避行动", result: "直升机受损", map: "已知宇宙", evaluation: "负面" },
+    { id: "109b", dilemma: "凡事讲概率", option: "采取回避行动", result: "【伤病】碎脸", map: "已知宇宙", evaluation: "伤病" },
   { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "失踪", map: "已知宇宙", evaluation: "失踪" },
   { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "经验奖励+1%", map: "已知宇宙", evaluation: "正面" },
   { id: "110", dilemma: "凡事讲概率", option: "二次确认（飞行员之翼）", result: "探险行动时长：+5天", map: "已知宇宙", evaluation: "负面" },
@@ -320,6 +323,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "297b", dilemma: "深入洞穴", option: "探个痛快！", result: "探险行动时长：+4天，伤病：痛痛退", map: "远方群岛", evaluation: "伤病" },
   { id: "298", dilemma: "深入洞穴", option: "现在不行", result: "未知", map: "远方群岛", evaluation: "中性" }
 ];
+
 
 
 
