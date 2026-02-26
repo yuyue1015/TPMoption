@@ -17,6 +17,7 @@ const FORM_URL = 'https://my.feishu.cn/share/base/form/shrcnL8QkRKAuxL5J6FuT2nVO
 
 type Mode = 'search' | 'game';
 type GuessType = 'negative' | 'neutral' | 'positive';
+type RecordId = DilemmaRecord['id'];
 
 interface GroupedDilemma {
   name: string;
@@ -40,7 +41,7 @@ export default function DilemmaSearchApp() {
   const [hasMounted, setHasMounted] = useState(false);
   const [mode, setMode] = useState<Mode>('search');
   const [randomDilemma, setRandomDilemma] = useState<GroupedDilemma | null>(null);
-  const [guessMap, setGuessMap] = useState<Record<number, GuessState>>({});
+  const [guessMap, setGuessMap] = useState<Record<RecordId, GuessState>>({});
   const [showCorrectModal, setShowCorrectModal] = useState(false);
 
   useEffect(() => {
@@ -74,7 +75,7 @@ export default function DilemmaSearchApp() {
     setShowCorrectModal(false);
   };
 
-  const handleGuess = (recordId: number, evaluation: string, guess: GuessType) => {
+  const handleGuess = (recordId: RecordId, evaluation: string, guess: GuessType) => {
     const isCorrect = getGuessType(evaluation) === guess;
 
     setGuessMap((prev) => ({
@@ -286,8 +287,8 @@ function GameDilemmaCard({
   onGuess
 }: {
   data: GroupedDilemma;
-  guessMap: Record<number, GuessState>;
-  onGuess: (recordId: number, evaluation: string, guess: GuessType) => void;
+  guessMap: Record<RecordId, GuessState>;
+  onGuess: (recordId: RecordId, evaluation: string, guess: GuessType) => void;
 }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all">
