@@ -329,11 +329,12 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
     { id: "300", dilemma: "草原救援行动", option: "彩环仓鼠", result: "特质：鼠鼠之友", map: "远方群岛", evaluation: "正面" },
     { id: "301", dilemma: "远方流感", option: "装没看见", result: "未知", map: "远方群岛", evaluation: "中性" },
       { id: "302", dilemma: "远方流感", option: "等一等吧", result: "未知", map: "远方群岛", evaluation: "中性" },
-    { id: "303", dilemma: "远方流感", option: "送TA回去", result: "特指：连锁犯病，直升机受损", map: "远方群岛", evaluation: "负面" },
+    { id: "303", dilemma: "远方流感", option: "送TA回去", result: "特质：连锁犯病，直升机受损", map: "远方群岛", evaluation: "负面" },
         { id: "302", dilemma: "宠物用品商人", option: "买吱吱扩音器（-$5000）", result: "纸质扩音器，金钱-5000", map: "远方群岛", evaluation: "中性" },
   { id: "302", dilemma: "宠物用品商人", option: "买自我净化孢子-$7500", result: "自我净化孢子，金钱-7500", map: "远方群岛", evaluation: "中性" }, 
   { id: "302", dilemma: "宠物用品商人", option: "现在不买", result: "未知", map: "远方群岛", evaluation: "中性" }
 ];
+
 
 
 
