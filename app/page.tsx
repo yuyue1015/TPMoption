@@ -243,7 +243,7 @@ export default function DilemmaSearchApp() {
         </div>
 
         <p className="text-slate-400 text-xs font-medium mt-2">
-          已收录 {DILEMMA_DATA.length} 条探险记录 | 更新时间2026年2月22日
+          已收录 {DILEMMA_DATA.length} 条探险记录 | 更新时间2026年3月1日
         </p>
       </div>
 
