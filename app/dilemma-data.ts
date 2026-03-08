@@ -267,7 +267,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "230", dilemma: "巨无霸麻烦", option: "边看边学", result: "+50% XP,特质:生态学家", map: "远方群岛", evaluation: "正面" },
   { id: "231", dilemma: "巨无霸麻烦", option: "看来帮不上忙", result: "未知", map: "远方群岛", evaluation: "中性" },
   { id: "232", dilemma: "一道难题", option: "尽量解决", result: "探险行动时长:+7天,生物多样性等级降低", map: "远方群岛", evaluation: "负面" },
-  { id: "233", dilemma: "一道难题", option: "竭尽全力", result: "探险行动时长:+15天", map: "远方群岛", evaluation: "负面" },
+  { id: "233", dilemma: "一道难题", option: "竭尽全力", result: "探险行动时长:+15天,生物多样性等级+25%", map: "远方群岛", evaluation: "负面" },
   { id: "234", dilemma: "国王的巨款", option: "黄金", result: "金钱+15000, 特质：破军杀龙", map: "焦土世界", evaluation: "正面" },
   { id: "235", dilemma: "国王的巨款", option: "魔法药瓶", result: "随行物品（无敌药水）, 特质：破军杀龙", map: "焦土世界", evaluation: "正面" },
   { id: "236", dilemma: "野外漏油事件", option: "救援动物", result: "展示品品质+3, 生物多样性等级-25%", map: "远方群岛", evaluation: "中性" },
@@ -280,6 +280,7 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
   { id: "243", dilemma: "美石相伴", option: "不了，谢谢", result: "无事发生", map: "远方群岛", evaluation: "中性" },
   { id: "244", dilemma: "", option: "清理栖息地", result: "未知", map: "远方群岛", evaluation: "中性" },
   { id: "263", dilemma: "杂乱小窝", option: "带走动物", result: "展示品的品质:+1", map: "远方群岛", evaluation: "正面" },
+    { id: "263", dilemma: "杂乱小窝", option: "清理栖息地", result: "探险行动时长:+7天,生物多样性等级+10%", map: "远方群岛", evaluation: "正面" },
   { id: "245", dilemma: "巢摇过市", option: "带走书", result: "特质：龙之力量", map: "焦土世界", evaluation: "正面" },  
   { id: "245b", dilemma: "巢摇过市", option: "带走书", result: "特质：龙语者", map: "焦土世界", evaluation: "正面" },
   { id: "246", dilemma: "巢摇过市", option: "带走黄金", result: "金钱+15000", map: "焦土世界", evaluation: "正面" },
@@ -332,8 +333,11 @@ export const DILEMMA_DATA: DilemmaRecord[] = [
     { id: "303", dilemma: "远方流感", option: "送TA回去", result: "特质：连锁犯病，直升机受损", map: "远方群岛", evaluation: "负面" },
         { id: "302", dilemma: "宠物用品商人", option: "买吱吱扩音器（-$5000）", result: "纸质扩音器，金钱-5000", map: "远方群岛", evaluation: "中性" },
   { id: "302", dilemma: "宠物用品商人", option: "买自我净化孢子-$7500", result: "自我净化孢子，金钱-7500", map: "远方群岛", evaluation: "中性" }, 
-  { id: "302", dilemma: "宠物用品商人", option: "现在不买", result: "未知", map: "远方群岛", evaluation: "中性" }
+  { id: "302", dilemma: "宠物用品商人", option: "现在不买", result: "未知", map: "远方群岛", evaluation: "中性" },
+      { id: "300", dilemma: "极地救援行动", option: "方狐", result: "特质：狗奴", map: "远方群岛", evaluation: "正面" },
+      { id: "300", dilemma: "极地救援行动", option: "滚石企鹅", result: "未知", map: "远方群岛", evaluation: "未知" }
 ];
+
 
 
 
